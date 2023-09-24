@@ -1,0 +1,154 @@
+body, h1, h2, h3, p, ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+header {
+    background-color: #232f3e;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+}
+
+
+nav ul li a img {
+    width: 24px; 
+    height: auto; 
+}
+
+
+
+.logo img {
+    max-height: 100px;
+}
+
+.banner img {
+    width: 100%; 
+    height: 50%;
+    display: block;
+}
+
+
+#categorias {
+    margin-top: 20px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#categorias h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+#categorias ul {
+    list-style: none;
+}
+
+#categorias li {
+    margin-bottom: 10px;
+}
+
+#categorias a {
+    color: #007185;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+
+#produtos {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: space-between; 
+}
+
+.produto {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+    width: calc(33.33% - 20px); 
+    box-sizing: border-box; 
+    position: relative; 
+}
+
+.produto img {
+    max-width: 40%; 
+    height: auto;
+}
+
+.produto h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.produto p {
+    font-size: 16px;
+    margin-bottom: 10px; 
+}
+
+
+.produto h3,
+.produto p,
+.produto a {
+    margin-right: 10px; 
+}
+
+footer {
+    background-color: #232f3e;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-right {
+        margin-top: 20px;
+    }
+
+    .produto {
+        width: 100%;
+        margin-right: 0;
+    }
+}
