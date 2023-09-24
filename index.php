@@ -2,7 +2,7 @@
 // Arquivo de conexão com o banco de dados
 include 'includes/conexao.php';
 
-// Recupera todas as categorias do banco de dudes
+// Recupera todas as categorias do banco de dados
 $sqlCategorias = "SELECT * FROM categorias";
 $stmtCategorias = $conn->prepare($sqlCategorias);
 //$stmtCategorias->execute();
