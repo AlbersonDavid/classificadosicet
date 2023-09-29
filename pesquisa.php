@@ -1,68 +1,71 @@
+<?php
+// Arquivo de conexão com o banco de dados
+include 'includes/conexao.php';
+
+// Verifica se o formulário foi enviado
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $pesquisa = $_POST['pesquisa'];
+
+    // Consulta o SQL para buscar produtos com base na pesquisa
+$sql = "SELECT produtos.*, usuarios.nome AS nome_usuario
+        FROM produtos
+        INNER JOIN usuarios ON produtos.id_usuario = usuarios.id
+        WHERE produtos.titulo LIKE :pesquisa OR produtos.descricao LIKE :pesquisa";
+$stmt = $conn->prepare($sql);
+$stmt->bindValue(':pesquisa', "%$pesquisa%");
+$stmt->execute();
+$resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+}
+?>
+
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
-    <title>Pesquisa de Produtos</title>
-    <link rel="stylesheet" type="text/css" href="css/pesquisa.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados da Pesquisa</title>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <h1>Pesquisa de Produtos</h1>
-    <?php
-    
-    include 'includes/conexao.php';
-    
-    // Verifica se o formulário foi enviado
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $pesquisa = $_POST['pesquisa'];
+    <header>
+        <div class="logo">
+            <a href="index.php"><img src="assets/logo.png" alt="Logo da Página"></a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="admin/admin.php"><img src="assets/admin-icon.png" alt="Admin"> Admin</a></li>
+                <li><a href="registro.php"><img src="assets/user-icon.png" alt="Criar Usuário"> Criar Usuário</a></li>
+                <li><a href="login.php"><img src="assets/login-icon.png" alt="Login"> Login</a></li>
+            </ul>
+        </nav>
+    </header>
 
-        // Consulta o SQL para buscar produtos com base na pesquisa
-        $sql = "SELECT * FROM produtos WHERE titulo LIKE :pesquisa OR descricao LIKE :pesquisa";
-        $stmt = $conn->prepare($sql);
-        $stmt->bindValue(':pesquisa', "%$pesquisa%");
-        $stmt->execute();
+    <div class="container">
+        <h1>Resultados da Pesquisa</h1>
+        <?php if(isset($resultados) && count($resultados) > 0): ?>
+            <section id="resultados">
+                <h2>Produtos Encontrados:</h2>
+                <?php foreach ($resultados as $produto): ?>
+                    <div class="produto">
+                        <img src="imagens/<?php echo $produto['imagem']; ?>" alt="Imagem do Produto">
+                        <h3><?php echo $produto['titulo']; ?></h3>
+                        <p><?php echo $produto['descricao']; ?></p>
+                        <p>Preço: R$ <?php echo number_format($produto['preco'], 2, ',', '.'); ?></p>
+                        <p>Vendedor: <?php echo $produto['nome_usuario']; ?></p>
+                        <p><a href="https://wa.me/<?php echo $produto['whatsapp_contato']; ?>?text=<?php echo urlencode('Gostaria de comprar o produto: ' . $produto['titulo'] . ' - Preço: R$ ' . number_format($produto['preco'], 2, ',', '.')); ?>">Comprar via WhatsApp</a></p>
+                    </div>
+                <?php endforeach; ?>
+            </section>
+        <?php else: ?>
+            <p>Nenhum resultado encontrado.</p>
+        <?php endif; ?>
+    </div>
 
-        if ($stmt->rowCount() > 0) {
-            // Exibe os resultados da pesquisa
-            echo '<h2>Resultados da Pesquisa:</h2>';
-            echo '<table>';
-            echo '<thead>';
-            echo '<tr>';
-            echo '<th>Imagem</th>';
-            echo '<th>Categoria</th>';
-            echo '<th>Titulo</th>';
-            echo '<th>Descrição</th>';
-            echo '<th>Preço</th>';
-            echo '<th>Contato</th>';
-            echo '</tr>';
-            echo '</thead>';
-            echo '<tbody>';
-            while ($produto = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                echo '<tr>';
-                echo '<td><img src="imagens/' . $produto['imagem'] . '" alt="Imagem do Produto"></td>';
-                echo '<td>' . $produto['categoria'] . '</td>';
-                echo '<td>' . $produto['titulo'] . '</td>';
-                echo '<td>' . $produto['descricao'] . '</td>';
-                echo '<td>R$ ' . number_format($produto['preco'], 2, ',', '.') . '</td>';
-                echo '<td><a href="https://wa.me/' . $produto['whatsapp_contato'] . '?text=' . urlencode('Gostaria de comprar o produto: ' . $produto['titulo'] . ' - Preço: R$ ' . number_format($produto['preco'], 2, ',', '.')) . '">Comprar via WhatsApp</a></td>';
-                echo '</tr>';
-            }
-            echo '</tbody>';
-            echo '</table>';
-        } else {
-            echo '<p>Nenhum resultado encontrado.</p>';
-        }
-    }
-    ?>
-    <h2>Faça uma Pesquisa</h2>
-    <form method="post">
-        <input type="text" name="pesquisa" placeholder="Pesquisar por título ou descrição">
-        <input type="submit" value="Pesquisar">
-    </form>
-    <p>
-        <a href="produtos.php">Voltar para a lista de produtos</a>
-    </p>
-    
-     <footer class="footer-container">
-            <p>&copy; Classificados ICET - Projeto SUPER </p>
+    <footer>
+        <div class="container">
+            <p>&copy; Classificados ICET - Projeto SUPER</p>
+        </div>
     </footer>
 </body>
 </html>

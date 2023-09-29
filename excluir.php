@@ -13,6 +13,6 @@ if ($id) {
 }
 
 // Redireciona para a página de produtos
-header('Location: produtos.php');
+header('Location: perfil.php');
 exit();
 ?>

@@ -6,7 +6,6 @@
     <title>Dashboard</title>
     <link rel="stylesheet" href="css/dashboard.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
 </head>
 <body>
     <header>
@@ -56,20 +55,16 @@
                 labels: ['Usuários', 'Produtos'],
                 datasets: [{
                     data: [<?php echo $dadosUsuarios['totalUsuarios']; ?>, <?php echo $dadosProdutos['totalProdutos']; ?>],
-                    backgroundColor: ['blue', 'darkblue']
+                    backgroundColor: ['blue', 'darkblue'], // Customize colors here
                 }]
             };
 
             // Configurações do gráfico
             var config = {
-                type: 'bar',
+                type: 'pie', // Change the chart type to 'pie'
                 data: dados,
                 options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    }
+                    // No need for scales in a pie chart
                 }
             };
 
@@ -77,10 +72,9 @@
             var grafico = new Chart(document.getElementById('grafico'), config);
         </script>
     </div>
-<br>
-    
+    <br>
     <footer class="footer-container">
-            <p>&copy; Classificados ICET - Projeto SUPER </p>
+        <p>&copy; Classificados ICET - Projeto SUPER</p>
     </footer>
 </body>
 </html>

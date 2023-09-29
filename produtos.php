@@ -62,7 +62,6 @@
         </div>
         <p class="center-align">
             <a href="categorias.php" class="buy-button">Ver por categorias</a>
-            <a href="adicionar.php" class="buy-button">Adicionar Produto</a>
         </p>
     </div>
     

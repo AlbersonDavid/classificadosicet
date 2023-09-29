@@ -1,13 +1,17 @@
+/* Reset de margens e preenchimento */
 body, h1, h2, h3, p, ul, li {
     margin: 0;
     padding: 0;
 }
 
+/* Estilos gerais */
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
+    transition: background-color 0.3s ease;
 }
 
+/* Estilos do cabeçalho */
 header {
     background-color: #232f3e;
     color: white;
@@ -16,11 +20,13 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    transition: background-color 0.3s ease;
 }
 
 header h1 {
     font-size: 36px;
     font-weight: bold;
+    transition: font-size 0.3s ease;
 }
 
 nav ul {
@@ -35,10 +41,11 @@ nav li {
 nav a {
     color: white;
     text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 nav ul li a img {
-    width: 24px; 
+    width: 24px;
     height: auto;
 }
 
@@ -46,74 +53,50 @@ nav ul li a img {
     max-height: 100px;
 }
 
-.container {
+
+#user-profile {
     background-color: white;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
 }
 
-.container h2 {
+#user-profile h2 {
     font-size: 24px;
     margin-bottom: 10px;
 }
 
-.container p {
-    font-size: 18px;
+#user-profile p {
     margin-bottom: 20px;
 }
 
-.form-control {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+#user-profile h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
 }
 
-.btn-primary {
-    background-color: #232f3e;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+#user-profile ul {
+    list-style: none;
+    padding-left: 0;
 }
 
-.btn-default {
-    background-color: #f0f0f0;
-    color: #333;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+#user-profile li {
+    margin-bottom: 10px;
 }
 
-#grafico {
-    max-width: 600px;
-    margin: 20px auto;
+#user-profile a {
+    text-decoration: none;
+    color: #232f3e;
+    font-weight: bold;
+    margin-left: 10px;
 }
 
-.blue {
-    background-color: #3498db;
-    color: #fff;
-}
-
-.darkblue {
-    background-color: #232f3e;
-    color: #fff;
-}
 
 .footer-container {
-    position: sticky;
-    bottom: 0;
-    left: 0;
-    right: 0;
     background-color: #232f3e;
     color: white;
     text-align: center;
     padding: 10px 0;
-    font-size: 14px;
 }
 
 footer a {

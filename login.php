@@ -46,6 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             // Armazena os dados na sessão
                             $_SESSION["id"] = $id;
                             $_SESSION["matricula"] = $matricula;
+                            $_SESSION["usuario_id"] = $id; // Adicione esta linha
 
                             // Redireciona para a página de perfil
                             header("location: perfil.php");
