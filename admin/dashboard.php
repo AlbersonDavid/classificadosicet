@@ -49,26 +49,37 @@
         <h2>Gráfico de Usuários e Produtos</h2>
         <canvas id="grafico"></canvas>
 
+        <h2>Buscar Usuário</h2>
+        <form method="POST" action="buscar_usuario.php">
+            <input type="text" name="termo_busca" placeholder="Nome ou Matrícula">
+            <button type="submit">Buscar</button>
+        </form>
+
+        <h2>Excluir Usuário e Produtos</h2>
+        <form method="POST" action="excluir_usuario.php">
+            <input type="text" name="id_usuario" placeholder="ID do Usuário">
+            <button type="submit">Excluir</button>
+        </form>
+        
         <script>
             // Dados para o gráfico
             var dados = {
                 labels: ['Usuários', 'Produtos'],
                 datasets: [{
                     data: [<?php echo $dadosUsuarios['totalUsuarios']; ?>, <?php echo $dadosProdutos['totalProdutos']; ?>],
-                    backgroundColor: ['blue', 'darkblue'], // Customize colors here
+                    backgroundColor: ['blue', 'darkblue'],
                 }]
             };
 
             // Configurações do gráfico
             var config = {
-                type: 'pie', // Change the chart type to 'pie'
+                type: 'pie', 
                 data: dados,
                 options: {
-                    // No need for scales in a pie chart
+          
                 }
             };
 
-            // Criação do gráfico
             var grafico = new Chart(document.getElementById('grafico'), config);
         </script>
     </div>

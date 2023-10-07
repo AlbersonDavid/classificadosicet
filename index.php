@@ -152,26 +152,26 @@ $recentProducts = $stmtRecentProducts->fetchAll(PDO::FETCH_ASSOC);
             $stmtProdutos->execute();
             $produtos = $stmtProdutos->fetchAll(PDO::FETCH_ASSOC);
 
-            if (count($produtos) > 0) {
-                foreach ($produtos as $produto) {
-                    echo '<div class="produto">';
-                    echo '<img src="imagens/' . $produto['imagem'] . '" alt="Imagem do Produto">';
-                    echo '<h3>' . $produto['titulo'] . '</h3>';
-                    echo '<p>' . $produto['descricao'] . '</p>';
-                    echo '<p>Preço: R$ ' . number_format($produto['preco'], 2, ',', '.') . '</p>';
-                    echo '<p>Vendedor: ' . $produto['nome_usuario'] . '</p>';
-
-                    // Adicione o botão do WhatsApp com os estilos CSS
-                    echo '<a href="https://wa.me/' . $produto['whatsapp_contato'] . '?text=' . urlencode('Gostaria de comprar o produto: ' . $produto['titulo'] . ' - Preço: R$ ' . number_format($produto['preco'], 2, ',', '.')) . '" class="whatsapp-button"><img src="assets/whatsapp-icon.png" alt="WhatsApp"> Comprar via WhatsApp</a>';
-
-                    echo '</div>';
-                }
-            } else {
-                echo '<p>Nenhum produto encontrado.</p>';
+        if (count($produtos) > 0) {
+            foreach ($produtos as $produto) {
+                echo '<div class="produto">';
+                echo '<img src="imagens/' . $produto['imagem'] . '" alt="Imagem do Produto">';
+                echo '<h3>' . $produto['titulo'] . '</h3>';
+                echo '<p>' . $produto['descricao'] . '</p>';
+                echo '<p>Preço: R$ ' . number_format($produto['preco'], 2, ',', '.') . '</p>';
+                echo '<p>Vendedor: ' . $produto['nome_usuario'] . '</p>';
+                
+                // Adicione o botão do WhatsApp com os estilos CSS
+                echo '<a href="https://wa.me/' . $produto['whatsapp_contato'] . '?text=' . urlencode('Gostaria de comprar o produto: ' . $produto['titulo'] . ' - Preço: R$ ' . number_format($produto['preco'], 2, ',', '.')) . '" class="whatsapp-button"><img src="assets/whatsapp-icon.png" alt="WhatsApp"> Comprar via WhatsApp</a>';
+                
+                echo '</div>';
             }
-            ?>
-        </section>
-    </div>
+        } else {
+            echo '<p>Nenhum produto encontrado.</p>';
+        }
+        ?>
+    </section>
+</div>
 
 
 
