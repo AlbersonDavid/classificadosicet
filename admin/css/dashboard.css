@@ -9,7 +9,7 @@ body {
 }
 
 header {
-    background-color: #232f3e;
+    background-color: #47630c;
     color: white;
     text-align: center;
     padding: 20px 0;
@@ -72,7 +72,7 @@ nav ul li a img {
 }
 
 .btn-primary {
-    background-color: #232f3e;
+    background-color: #47630c;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -90,17 +90,17 @@ nav ul li a img {
 }
 
 #grafico {
-    max-width: 600px;
+    max-width: 400px;
     margin: 20px auto;
 }
 
 .blue {
-    background-color: #3498db;
+    background-color: #9b561a;
     color: #fff;
 }
 
 .darkblue {
-    background-color: #232f3e;
+    background-color: #47630c;
     color: #fff;
 }
 
@@ -109,7 +109,7 @@ nav ul li a img {
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: #232f3e;
+    background-color: #47630c;
     color: white;
     text-align: center;
     padding: 10px 0;

@@ -9,7 +9,7 @@ body {
 }
 
 header {
-    background-color: #232f3e;
+    background-color: #47630c;
     color: white;
     text-align: center;
     padding: 20px 0;
@@ -87,7 +87,7 @@ nav ul li a img {
 }
 
 .btn-primary {
-    background-color: #232f3e;
+    background-color: #47630c;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -105,7 +105,7 @@ nav ul li a img {
 }
 
 .footer-container {
-    background-color: #232f3e;
+    background-color: #47630c;
     color: white;
     text-align: center;
     padding: 10px 0;

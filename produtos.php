@@ -60,9 +60,12 @@ echo '</tr>';
                 </tbody>
             </table>
         </div>
-        <p class="center-align">
-            <a href="categorias.php" class="buy-button">Ver por categorias</a>
-        </p>
+     <br>
+    <br>
+    <p>
+        <a href="categorias.php">Voltar para categorias de produtos</a>
+        <a href="perfil.php">Voltar para perfil</a>
+    </p><br>
     </div>
     
     <footer class="footer-container">

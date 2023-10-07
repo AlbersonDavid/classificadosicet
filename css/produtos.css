@@ -9,7 +9,7 @@ body {
 }
 
 header {
-    background-color: #232f3e;
+    background-color: #47630c;
     color: white;
     text-align: center;
     padding: 20px 0;
@@ -63,7 +63,7 @@ table {
 }
 
 thead {
-    background-color: #232f3e;
+    background-color: #47630c;
     color: white;
 }
 
@@ -85,7 +85,7 @@ th {
 a.buy-button {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #232f3e;
+    background-color: #47630c;
     color: white;
     text-decoration: none;
     border-radius: 5px;
@@ -93,7 +93,7 @@ a.buy-button {
 }
 
 a.buy-button:hover {
-    background-color: #1a2533;
+    background-color: #586f0f;
 }
 
 .center-align {
@@ -101,7 +101,7 @@ a.buy-button:hover {
 }
 
 .footer-container {
-    background-color: #232f3e;
+    background-color: #47630c;
     color: white;
     text-align: center;
     padding: 10px 0;

@@ -8,7 +8,7 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/categorias.css">
 </head>
 <body>
     <header>
@@ -67,17 +67,15 @@
     </div>
 </section>
 
-<br>    
-    
+   <br>
+    <br>
     <p>
-        <a href="produtos.php">Ver todos os produtos</a>
-    </p>
-<br>
-
-    <footer>
-        <div class="container">
-            <p class="footer-text">&copy; Classificados ICET - Projeto SUPER</p>
-        </div>
+        <a href="produtos.php">Voltar para a lista de produtos</a>
+        <a href="perfil.php">Voltar para perfil</a>
+    </p><br>
+    
+    <footer class="footer-container">
+            <p>&copy; Classificados ICET - Projeto SUPER </p>
     </footer>
 </body>
 </html>
