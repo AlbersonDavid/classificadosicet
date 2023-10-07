@@ -53,8 +53,8 @@
                         echo '<td>' . $produto['titulo'] . '</td>';
                         echo '<td>' . $produto['descricao'] . '</td>';
                         echo '<td>R$ ' . number_format($produto['preco'], 2, ',', '.') . '</td>';
-                        echo '<td><a class="buy-button" href="https://wa.me/' . $produto['whatsapp_contato'] . '?text=' . urlencode('Gostaria de comprar o produto: ' . $produto['titulo'] . ' - Preço: R$ ' . number_format($produto['preco'], 2, ',', '.')) . '">Comprar via WhatsApp</a></td>';
-                        echo '</tr>';
+                        echo '<td><a class="buy-button" href="https://wa.me/' . $produto['whatsapp_contato'] . '?text=' . urlencode('Gostaria de comprar o produto: ' . $produto['titulo'] . ' - Preço: R$ ' . number_format($produto['preco'], 2, ',', '.')) . '" target="_blank">Comprar via WhatsApp</a></td>';
+echo '</tr>';
                     }
                     ?>
                 </tbody>
