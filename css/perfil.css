@@ -7,16 +7,16 @@ body, h1, h2, h3, p, ul, li {
 /* Estilos gerais */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    background-color: #64a36f;
     transition: background-color 0.3s ease;
 }
 
 /* Estilos do cabeçalho */
 header {
-    background-color: #47630c;
+    background-color: white;
     color: white;
     text-align: center;
-    padding: 20px 0;
+    padding: 10px 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -24,7 +24,7 @@ header {
 }
 
 header h1 {
-    font-size: 36px;
+    font-size: 24px; /* Reduzido o tamanho da fonte */
     font-weight: bold;
     transition: font-size 0.3s ease;
 }
@@ -39,72 +39,123 @@ nav li {
 }
 
 nav a {
-    color: white;
+    color: black;
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 nav ul li a img {
-    width: 24px;
+    width: 20px; /* Reduzido o tamanho da imagem */
     height: auto;
 }
 
 .logo img {
-    max-height: 100px;
+    max-height: 80px; /* Reduzido o tamanho da imagem do logo */
 }
 
+.menu {
+    color: black;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    max-height: 80px; /* Reduzido o tamanho máximo */
+}
+
+h1 {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 18px; /* Reduzido o tamanho da fonte */
+}
+
+main {
+    background-color: #fff;
+    padding: 10px; /* Reduzido o preenchimento */
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
 #user-profile {
-    background-color: white;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
 #user-profile h2 {
-    font-size: 24px;
+    font-size: 18px; /* Reduzido o tamanho da fonte */
     margin-bottom: 10px;
+}
+
+#user-profile img {
+    max-width: 150px; /* Reduzido o tamanho da imagem */
+    height: auto;
+    border-radius: 50%;
+    margin: 10px 0;
 }
 
 #user-profile p {
-    margin-bottom: 20px;
+    font-size: 14px;
 }
 
 #user-profile h3 {
-    font-size: 20px;
-    margin-bottom: 10px;
+    margin-top: 20px;
+    font-size: 16px; /* Reduzido o tamanho da fonte */
 }
 
 #user-profile ul {
     list-style: none;
-    padding-left: 0;
+    padding: 0;
+    margin: 10px 0;
 }
 
 #user-profile li {
-    margin-bottom: 10px;
+    font-size: 14px; /* Reduzido o tamanho da fonte */
+    margin: 5px 0;
 }
 
-#user-profile a {
-    text-decoration: none;
-    color: #586f0f;
+#change-password {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#change-password h3 {
+    font-size: 16px; /* Reduzido o tamanho da fonte */
+}
+
+.form-group {
+    margin: 10px 0;
+}
+
+.form-group label {
     font-weight: bold;
-    margin-left: 10px;
 }
 
+.form-group input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
 
-.footer-container {
-    position: sticky;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: #47630c;
+.form-group input[type="submit"] {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+/* Estilos do rodapé */
+footer {
+    background-color: white;
     color: white;
     text-align: center;
     padding: 10px 0;
-    font-size: 14px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
 
-footer a {
-    color: white;
+footer p {
+    color: black;
     text-decoration: none;
+    transition: color 0.3s ease;
 }

@@ -16,7 +16,7 @@ if (!isset($_SESSION["matricula"])) {
 $matricula = $_SESSION["matricula"];
 
 // Consulta para recuperar o nome do usuário
-$sql = "SELECT nome FROM usuarios WHERE matricula = :matricula";
+$sql = "SELECT id, nome, foto_perfil FROM usuarios WHERE matricula = :matricula";
 $stmt = $conn->prepare($sql);
 $stmt->bindValue(":matricula", $matricula, PDO::PARAM_STR);
 if (!$stmt->execute()) {
@@ -25,13 +25,15 @@ if (!$stmt->execute()) {
 }
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-// Nome do usuário
+// Nome e foto do perfil do usuário
 $nomeUsuario = $row["nome"];
+$fotoPerfil = $row["foto_perfil"];
+$userId = $row["id"];
 
 // Consulta para recuperar os produtos do usuário
 $sqlProdutos = "SELECT id, titulo FROM produtos WHERE id_usuario = :id_usuario";
 $stmtProdutos = $conn->prepare($sqlProdutos);
-$stmtProdutos->bindValue(":id_usuario", $_SESSION["id"], PDO::PARAM_INT); // Use o ID do usuário da sessão
+$stmtProdutos->bindValue(":id_usuario", $userId, PDO::PARAM_INT);
 if (!$stmtProdutos->execute()) {
     echo "Erro na consulta de produtos do usuário: " . print_r($stmtProdutos->errorInfo(), true);
     exit;
@@ -50,27 +52,34 @@ $resultProdutos = $stmtProdutos->fetchAll(PDO::FETCH_ASSOC);
 <body>
     <header>
         <div class="logo">
-            <a href="index.php"><img src="assets/logo.png" alt="Logo da Página"></a>
+            <a href="index.php"><img src="assets/logoclassificados.png" alt="Logo da Página"></a>
         </div>
         <nav>
             <ul>
-             <li><a href="categorias.php"><img src="assets/categorias-icon.png" alt="Categorias"> Categorias</a></li>
-            <li><a href="produtos.php"><img src="assets/produtos-icon.png" alt="Produtos"> Produtos</a></li>
-            <li><a href="logout.php"><img src="assets/logout-icon.png" alt="Logout"> Sair</a></li> 
+                <li><a href="categorias.php"><img src="assets/categorias-icon.png" alt="Categorias"> Categorias</a></li>
+                <li><a href="produtos.php"><img src="assets/produtos-icon.png" alt="Produtos"> Produtos</a></li>
+                <li><a href="logout.php"><img src="assets/logout-icon.png" alt="Logout"> Sair</a></li>
             </ul>
         </nav>
     </header>
 
     <br><h1>Perfil do Usuário</h1>
-    
+
     <main>
         <section id="user-profile">
             <h2>Bem-vindo, <?php echo $nomeUsuario; ?></h2>
+           <?php if (!empty($fotoPerfil)) { ?>
+    <img src="imagens/<?php echo $fotoPerfil; ?>" alt="Foto de Perfil">
+<?php } else { ?>
+    <p>Você ainda não possui uma foto de perfil. <a href="alterar_foto_perfil.php">Adicionar foto</a></p>
+<?php } ?>
+
+
             <p>Aqui você pode visualizar e gerenciar suas informações de perfil e produtos cadastrados.</p>
             
-             <p class="center-align">
-            <a href="adicionar.php" class="buy-button">Adicionar Produto</a>
-        </p>
+            <p>
+                <a href="adicionar.php">Adicionar produtos</a>
+            </p>
 
             <h3>Seus Produtos:</h3>
             <ul>
@@ -82,6 +91,22 @@ $resultProdutos = $stmtProdutos->fetchAll(PDO::FETCH_ASSOC);
                     </li>
                 <?php } ?>
             </ul>
+        </section>
+        <section id="change-password">
+            <h3>Alterar Senha</h3>
+            <form action="alterar_senha.php" method="post">
+                <div class="form-group">
+                    <label>Nova Senha:</label>
+                    <input type="password" name="nova_senha" required>
+                </div>
+                <div class="form-group">
+                    <label>Confirme a Nova Senha:</label>
+                    <input type="password" name="confirmar_senha" required>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Alterar Senha">
+                </div>
+            </form>
         </section>
     </main>
 

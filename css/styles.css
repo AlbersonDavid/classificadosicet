@@ -1,54 +1,14 @@
-  .box select {
-    background-color: white;
-    color: black;
-    padding: 12px;
-    width: 125px;
-    border: none;
-    font-size: 16px;
-    -webkit-appearance: button;
-    appearance: button;
-    outline: none;
-  }
-  
-  .box::before {
-    content: "\f13a";
-    font-family: FontAwesome;
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 0%;
-    height: 100%;
-    text-align: center;
-    font-size: 28px;
-    line-height: 45px;
-    color: rgba(255, 255, 255, 0.5);
-    background-color: rgba(255, 255, 255, 0.1);
-    pointer-events: none;
-  }
-  
-  .box:hover::before {
-    color: rgba(255, 255, 255, 0.6);
-    background-color: rgba(255, 255, 255, 0.2);
-  }
-  
-  .box select option {
-    padding: 30px;
-  }
-
-/* Reset de margens e preenchimento */
 body, h1, h2, h3, p, ul, li {
     margin: 0;
     padding: 0;
 }
 
-/* Estilos gerais */
 body {
     font-family: Arial, sans-serif;
-    background-color: #47630B;
+    background-color: #64a36f;
     transition: background-color 0.3s ease;
 }
 
-/* Estilos do cabeçalho */
 header {
     background-color: white;
     color: white;
@@ -97,15 +57,12 @@ nav ul li a img {
     max-height: 100px;
 }
 
-
-/* Estilos das seções */
 .section-title {
     font-size: 24px;
     margin-bottom: 10px;
     transition: font-size 0.3s ease, margin-bottom 0.3s ease;
 }
 
-/* Estilos do formulário de pesquisa */
 .search-form {
     text-align: center;
     margin-top: 20px;
@@ -121,8 +78,8 @@ nav ul li a img {
 }
 
 .search-form input[type="submit"] {
-    background-color: #232f3e;
-    color: white;
+    background-color: white;
+    color: black;
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
@@ -130,25 +87,26 @@ nav ul li a img {
     transition: background-color 0.3s ease;
 }
 
-/* CSS for the category grid */
+
 .category-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
+    justify-content: center; 
 }
 
-/* Style for individual categories */
+
 .category {
-    background-color: #232f3e; /* Cor de fundo */
-    color: white; /* Cor do texto */
+    background-color: #232f3e; 
+    color: white; 
     padding: 15px;
     text-align: center;
     transition: background-color 0.3s;
-    border-top: 3px solid #ffa07a; /* Borda superior (variação mais escura) */
-    border-bottom: 3px solid #9365b8; /* Borda inferior (variação mais escura) */
-    border-left: 1px dashed #1d2937; /* Borda esquerda (variação mais escura, linha tracejada) */
-    border-right: 1px dotted #1d2937; /* Borda direita (variação mais escura, linha pontilhada) */
-    border-radius: 15px; /* Cantos arredondados */
+    border-top: 3px solid #ffa07a; 
+    border-bottom: 3px solid #9365b8; 
+    border-left: 1px dashed #1d2937; 
+    border-right: 1px dotted #1d2937;
+    border-radius: 15px; 
 }
 
 .category a {
@@ -157,10 +115,19 @@ nav ul li a img {
 }
 
 .category:hover {
-    background-color: #1d2937; /* Cor de fundo ao passar o mouse (variação mais escura) */
+    background-color: #64a36f; 
 }
 
-/* Estilos para a seção de Produtos Recentes */
+.banner {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.banner img {
+    max-width: 100%;
+    height: auto;
+}
+
 #recent-products {
     margin-top: 20px;
     background-color: white;
@@ -174,30 +141,39 @@ nav ul li a img {
     margin-bottom: 10px;
 }
 
+
 .slick-carousel {
     position: relative;
+    margin: 0 auto; 
+    max-width: 600px; 
+    width: 50%; 
 }
 
 .slick-carousel .carousel-item {
-    /* Estilos para os itens do carrossel */
-    background-color: #f9f9f9;
+     background: rgba(100, 163, 111, 0.7); 
     padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     margin-right: 20px;
-    transition: background-color 0.3s ease;
+    transition: background 0.3s ease;
+    text-align: center; /* Centraliza o conteúdo do item */
+    width: 250px; /* Largura fixa para as caixas dos produtos */
+    color: white;
+    font-size: 18px;
 }
+
 
 .slick-carousel .carousel-item:last-child {
     margin-right: 0;
 }
 
 .slick-carousel .carousel-item img {
-   max-width: 40%;
+    max-width: 100%;
     height: auto;
+    border-radius: 10px;
 }
 
-/* Estilos para os botões de navegação do carrossel (próximo e anterior) */
+
 .slick-next,
 .slick-prev {
     position: absolute;
@@ -205,7 +181,7 @@ nav ul li a img {
     transform: translateY(-50%);
     z-index: 1;
     cursor: pointer;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: #333;
     padding: 10px;
     border-radius: 50%;
     color: white;
@@ -214,7 +190,7 @@ nav ul li a img {
 
 .slick-next:hover,
 .slick-prev:hover {
-    background-color: #232f3e;
+    background-color: #64a36f;
 }
 
 .slick-next {
@@ -225,7 +201,7 @@ nav ul li a img {
     left: -25px;
 }
 
-/* Estilos para os pontos de navegação do carrossel (indicadores de slides) */
+
 .slick-dots {
     position: absolute;
     bottom: 10px;
@@ -249,74 +225,153 @@ nav ul li a img {
 }
 
 .slick-dots li.slick-active button {
-    background-color: #232f3e;
+    background-color: #64a36f;
 }
 
 
-/* Estilos dos produtos */
-.produto {
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    justify-content: center;
+    flex-grow: 1; 
+}
+
+.grid-item {
     background-color: white;
     padding: 20px;
-    margin-bottom: 20px;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border: 1px solid #ddd;
-    width: calc(33.33% - 20px);
-    box-sizing: border-box;
-    position: relative;
+    text-align: center;
     transition: background-color 0.3s ease;
+    width: 250px; 
 }
 
-.produto img {
-    max-width: 40%;
+.grid-item img {
+    max-width: 100%;
     height: auto;
+    max-height: 150px; 
 }
 
-.produto h3 {
+.grid-item h3 {
+    font-size: 16px; 
+    max-height: 40px; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.grid-item p {
+    font-size: 14px; 
+    max-height: 60px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+.profile-icon-container {
+    width: 50px; 
+    height: 50px; 
+    border-radius: 50%;  
+    overflow: hidden;
+    display: inline-block; 
+}
+
+.profile-icon {
+    max-width: 100%; 
+    max-height: 100%; 
+    display: block; 
+}
+
+
+.whatsapp-button {
+    display: inline-block;
+    background-color: #64a36f; 
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+.whatsapp-button img {
+    width: 20px; 
+    margin-right: 5px;
+}
+
+.whatsapp-button:hover {
+    background-color: #64a36f; 
+}
+
+.spacer {
+    height: 20px;
+    background-color: transparent; 
+}
+
+
+.support-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #fff; 
+    color: #64a36f;
+    border: 2px solid #64a36f; 
+    border-radius: 50%;
+    padding: 15px 20px;
     font-size: 20px;
-    margin-bottom: 10px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, color 0.3s, transform 0.3s, border 0.3s;
 }
 
-.produto p {
-    font-size: 16px;
-    margin-bottom: 10px;
+.support-button:hover {
+    background-color: #64a36f; 
+    color: #fff; 
+    border: 2px solid #fff;
+    transform: scale(1.1);
 }
 
-.produto h3,
-.produto p,
-.produto a {
-    margin-right: 10px;
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
 }
 
-     .whatsapp-button {
-            display: inline-block;
-            background-color: #232f3e; 
-            color: #fff;
-            padding: 10px 15px;
-            border-radius: 5px;
-            text-decoration: none;
-            margin-top: 10px;
-        }
+.modal-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 5px;
+    width: 70%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
 
-        .whatsapp-button img {
-            width: 20px; /* Ajuste o tamanho do logotipo conforme necessário */
-            margin-right: 5px;
-        }
+.close-button {
+    float: right;
+    font-size: 30px;
+    cursor: pointer;
+}
 
-        .whatsapp-button:hover {
-            background-color: #1d2937; /* Cor de destaque ao passar o mouse */
-        }
+.close-button:hover {
+    color: #64a36f; 
+}
 
-/* Estilos do rodapé */
+
 footer {
-    background-color: #232f3e;
+    background-color: white;
     color: white;
     text-align: center;
     padding: 10px 0;
 }
 
-footer a {
-    color: white;
+footer p {
+    color: black;
     text-decoration: none;
     transition: color 0.3s ease;
 }
@@ -334,10 +389,5 @@ footer a {
 
     .search-button {
         width: 100%;
-    }
-
-    .produto {
-        width: 100%;
-        margin-right: 0;
     }
 }

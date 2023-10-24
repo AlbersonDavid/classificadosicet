@@ -10,7 +10,7 @@ body {
 }
 
 header {
-    background-color: #47630c;
+    background-color: #64a36f;
     color: white;
     text-align: center;
     padding: 20px 0;
@@ -77,7 +77,7 @@ select, input[type="file"], input[type="text"] {
 }
 
 input[type="submit"] {
-    background-color: #47630c;
+    background-color: #64a36f;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -94,7 +94,7 @@ p a {
 }
 
 .footer-container {
-    background-color: #47630c;
+    background-color: #64a36f;
     color: white;
     text-align: center;
     padding: 10px 0;

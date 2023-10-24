@@ -11,6 +11,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $descricao = $_POST['descricao'];
     $preco = $_POST['preco'];
     $whatsapp_contato = $_POST['whatsapp_contato'];
+    
+    // Adicione a recuperação do campo "tipo"
+    $tipo = $_POST['tipo'];
 
     // Move a imagem para a pasta de imagens
     move_uploaded_file($_FILES['imagem']['tmp_name'], 'imagens/' . $imagem);
@@ -20,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id_usuario = $_SESSION['id'];
 
     // Insere os dados no banco de dados
-    $sql = "INSERT INTO produtos (categoria, imagem, titulo, descricao, preco, whatsapp_contato, id_usuario) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO produtos (categoria, imagem, titulo, descricao, preco, whatsapp_contato, id_usuario, tipo) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(1, $categoria, PDO::PARAM_STR);
     $stmt->bindParam(2, $imagem, PDO::PARAM_STR);
@@ -29,7 +32,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bindParam(5, $preco, PDO::PARAM_STR);
     $stmt->bindParam(6, $whatsapp_contato, PDO::PARAM_STR);
     $stmt->bindParam(7, $id_usuario, PDO::PARAM_INT);
-    
+    $stmt->bindParam(8, $tipo, PDO::PARAM_STR);
+
     if ($stmt->execute()) {
         // Redireciona para a página de produtos
         header('Location: produtos.php');
@@ -40,8 +44,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
-
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -81,8 +83,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <option value="Equipamentos e Instrumentos">Equipamentos e Instrumentos</option>
             <option value="Diversos e Outros Itens">Diversos e Outros Itens</option>
             <option value="Coisas para Casa">Coisas para Casa</option>
-          
         </select><br>
+        
+        <!-- Adicione o campo "Tipo" -->
+        <label for="tipo">Tipo:</label>
+        <select id="tipo" name="tipo">
+            <option value="venda">Venda</option>
+            <option value="aluguel">Aluguel</option>
+        </select><br>
+
         <label for="imagem">Imagem:</label>
         <input type="file" id="imagem" name="imagem"><br>
         <label for="titulo">Titulo:</label>

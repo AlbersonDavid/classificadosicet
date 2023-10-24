@@ -1,0 +1,101 @@
+/* Estilos para o corpo da página */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos para o cabeçalho */
+header {
+    background-color: #64a36f;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.header .logo img {
+    width: 100px;
+}
+
+/* Estilo para as credenciais do administrador no cabeçalho */
+.admin-credentials {
+    text-align: right;
+    padding: 10px;
+}
+
+.admin-credentials p {
+    margin: 5px 0;
+    font-weight: bold;
+}
+
+/* Estilo para a barra de navegação (sidebar) */
+.sidebar {
+    width: 200px; /* Largura da barra de navegação */
+    background-color: #64a36f; /* Cor de fundo da barra de navegação */
+    color: #fff; /* Cor do texto na barra de navegação */
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    overflow-y: auto; /* Rolagem vertical quando a barra de navegação estiver cheia */
+}
+
+.sidebar ul {
+    padding: 0;
+    list-style: none;
+    margin-top: 50px; /* Ajuste o valor desejado para a distância da parte superior */
+}
+
+.sidebar ul li {
+    padding: 10px;
+    border-bottom: 1px solid #555;
+}
+
+.sidebar ul li:last-child {
+    border-bottom: none;
+}
+
+.sidebar ul li a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+}
+
+/* Estilos para o conteúdo principal */
+.container {
+    margin-left: 270px;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+#grafico-container {
+    width: 200px; /* Largura desejada */
+    height: 150px; /* Altura desejada */
+}
+
+#grafico {
+    width: 100%; /* 100% da largura do contêiner */
+    height: 100%; /* 100% da altura do contêiner */
+}
+
+
+/* Estilos para o rodapé */
+.footer-container {
+    background-color: #64a36f;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    clear: both;
+}

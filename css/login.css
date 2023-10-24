@@ -1,26 +1,32 @@
+/* Reset de margens e preenchimento */
 body, h1, h2, h3, p, ul, li {
     margin: 0;
     padding: 0;
 }
 
+/* Estilos gerais */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    background-color: #64a36f;
+    transition: background-color 0.3s ease;
 }
 
+/* Estilos do cabeçalho */
 header {
-    background-color: #47630c;
+    background-color: white;
     color: white;
     text-align: center;
-    padding: 20px 0;
+    padding: 0px 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    transition: background-color 0.3s ease;
 }
 
 header h1 {
     font-size: 36px;
     font-weight: bold;
+    transition: font-size 0.3s ease;
 }
 
 nav ul {
@@ -33,17 +39,32 @@ nav li {
 }
 
 nav a {
-    color: white;
+    color: black;
     text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 nav ul li a img {
-    width: 24px; 
-    height: auto; 
+    width: 24px;
+    height: auto;
 }
 
 .logo img {
     max-height: 100px;
+}
+
+.menu {
+    color: black;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    max-height: 100px;
+}
+
+/* Estilos das seções */
+.section-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+    transition: font-size 0.3s ease, margin-bottom 0.3s ease;
 }
 
 .form-wrapper {
@@ -51,17 +72,19 @@ nav ul li a img {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: calc(100vh - 120px);
-    margin-top: 20px;
+    min-height: 70vh; /* Defina a altura mínima em relação à altura da viewport (por exemplo, 70% da altura da viewport) */
+    padding: 20px;
+    margin-top: 40px; /* Adicione um espaçamento superior para afastar o formulário do cabeçalho */
 }
-
 .container {
     background-color: white;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 400px; /* Defina a largura máxima do formulário */
+    margin: 0 auto; /* Centraliza o formulário na página */
+    margin-top: 40px; /* Adicione um espaçamento superior para afastar o formulário do cabeçalho */
 }
-
 .container h2 {
     font-size: 24px;
     margin-bottom: 10px;
@@ -87,7 +110,7 @@ nav ul li a img {
 }
 
 .btn-primary {
-    background-color: #47630c;
+    background-color: #64a36f;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -104,14 +127,19 @@ nav ul li a img {
     cursor: pointer;
 }
 
-.footer-container {
-    background-color: #47630c;
+/* Estilos do rodapé */
+footer {
+    background-color: white;
     color: white;
     text-align: center;
     padding: 10px 0;
+    position: absolute; /* Posição absoluta para manter o rodapé no fundo da página */
+    bottom: 0; /* Fixa o rodapé na parte inferior da página */
+    width: 100%; /* Define a largura para ocupar toda a largura da página */
 }
 
-footer a {
-    color: white;
+footer p {
+    color: black;
     text-decoration: none;
+    transition: color 0.3s ease;
 }

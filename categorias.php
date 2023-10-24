@@ -13,7 +13,7 @@
 <body>
     <header>
         <div class="logo">
-            <a href="index.php"><img src="assets/logo.png" alt="Logo da Página"></a>
+            <a href="index.php"><img src="assets/logoclassificados.png" alt="Logo da Página"></a>
         </div>
     </header>
     

@@ -42,7 +42,7 @@ input[type="text"] {
 }
 
 input[type="submit"] {
-    background-color: #47630c;
+    background-color: #64a36f;
     color: #fff;
     padding: 10px 20px;
     border: none;
@@ -55,7 +55,7 @@ p a {
 }
 
 .footer-container {
-    background-color: #47630c;
+    background-color: #64a36f;
     color: white;
     text-align: center;
     padding: 10px 0;

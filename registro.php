@@ -3,8 +3,7 @@
 include 'includes/conexao.php';
 
 // Inicialize as variáveis
-$nome = $matricula = $senha = '';
-$nome_err = $matricula_err = $senha_err = $terms_err = '';
+$nome = $matricula = $senha = $foto_perfil = $nome_err = $matricula_err = $senha_err = $terms_err = $foto_perfil_err = '';
 
 // Processa os dados do formulário quando o formulário é enviado
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -12,6 +11,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST["accept-terms"])) {
         $terms_err = "Você deve concordar com os Termos e Condições para se registrar.";
     } else {
+        // Valida a foto de perfil
+        if (!empty($_FILES['foto_perfil']['name'])) {
+            $foto_perfil = $_FILES['foto_perfil']['name'];
+            $foto_temp = $_FILES['foto_perfil']['tmp_name'];
+            $upload_dir = 'imagens/'; // Substitua pelo diretório correto
+
+            if (move_uploaded_file($foto_temp, $upload_dir . $foto_perfil)) {
+                // A foto de perfil foi enviada com sucesso, você pode salvar o nome do arquivo no banco de dados.
+            } else {
+                $foto_perfil_err = "Erro ao fazer o upload da foto de perfil.";
+                $foto_perfil = ''; // Limpa o nome do arquivo em caso de erro no upload.
+            }
+        }
+
         // Valida o nome
         if (empty(trim($_POST["nome"]))) {
             $nome_err = "Por favor, insira o nome.";
@@ -54,18 +67,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         // Verifica erros de entrada antes de inserir no banco de dados
-        if (empty($nome_err) && empty($matricula_err) && empty($senha_err) && empty($terms_err)) {
+        if (empty($nome_err) && empty($matricula_err) && empty($senha_err) && empty($terms_err) && empty($foto_perfil_err)) {
             // Prepara uma instrução de inserção
-            $sql = "INSERT INTO usuarios (nome, matricula, senha) VALUES (:nome, :matricula, :senha)";
+            $sql = "INSERT INTO usuarios (nome, matricula, senha, foto_perfil) VALUES (:nome, :matricula, :senha, :foto_perfil)";
 
             if ($stmt = $conn->prepare($sql)) {
                 $stmt->bindParam(":nome", $param_nome, PDO::PARAM_STR);
                 $stmt->bindParam(":matricula", $param_matricula, PDO::PARAM_STR);
                 $stmt->bindParam(":senha", $param_senha, PDO::PARAM_STR);
+                $stmt->bindParam(":foto_perfil", $param_foto_perfil, PDO::PARAM_STR);
 
                 $param_nome = $nome;
                 $param_matricula = $matricula;
                 $param_senha = password_hash($senha, PASSWORD_DEFAULT); // Cria um hash de senha
+                $param_foto_perfil = $foto_perfil;
 
                 if ($stmt->execute()) {
                     // Redireciona para a página de login após o registro
@@ -94,11 +109,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <header>
         <div class="logo">
-            <a href="index.php"><img src="assets/logo.png" alt="Logo da Página"></a>
+            <a href="index.php"><img src="assets/logoclassificados.png" alt="Logo da Página"></a>
         </div>
         <nav>
             <ul>
-                <li><a href="admin/admin.php"><img src="assets/admin-icon.png" alt="Admin"> Admin</a></li>
+                <li><a href="admin.php"><img src="assets/admin-icon.png" alt="Admin"> Admin</a></li>
                 <li><a href="registro.php"><img src="assets/user-icon.png" alt="Criar Usuário"> Criar Usuário</a></li>
                 <li><a href="login.php"><img src="assets/login-icon.png" alt="Login"> Login</a></li>
             </ul>
@@ -108,12 +123,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="container form-wrapper">
         <h2>Criar Usuário</h2>
         <p>Preencha este formulário para criar uma conta.</p><br>
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            <div class="form-group <?php echo (!empty($nome_err)) ? 'has-error' : ''; ?>">
-                <label>Nome</label>
-                <input type="text" name="nome" class="form-control" value="<?php echo $nome; ?>">
-                <span class="help-block"><?php echo $nome_err; ?></span>
-            </div>
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
+    <div class="form-group <?php echo (!empty($foto_perfil_err)) ? 'has-error' : ''; ?>">
+        <label>Foto de Perfil:</label>
+        <input type="file" name="foto_perfil" accept="image/*">
+        <span class="help-block"><?php echo $foto_perfil_err; ?></span>
+    </div>
+    <div class="form-group <?php echo (!empty($nome_err)) ? 'has-error' : ''; ?>">
+        <label>Nome:</label>
+        <input type="text" name="nome" class="form-control" value="<?php echo $nome; ?>">
+        <span class="help-block"><?php echo $nome_err; ?></span>
+    </div>
             <div class="form-group <?php echo (!empty($matricula_err)) ? 'has-error' : ''; ?>">
                 <label>Matrícula</label>
                 <input type="text" name="matricula" class="form-control" value="<?php echo $matricula; ?>">
@@ -140,7 +160,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
     
     <footer class="footer-container">
-            <p>&copy; Classificados ICET - Projeto SUPER </p>
+        <p>&copy; Classificados ICET - Projeto SUPER</p>
     </footer>
 </body>
 </html>

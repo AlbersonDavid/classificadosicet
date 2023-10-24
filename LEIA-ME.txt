@@ -1,0 +1,5 @@
+O banco de dados foi alterado, para essa nova versão exclua a base antiga e crie a nova.
+
+No Msql adicione as suas credencias após importar a base, faça isso direto no insertion do sql.
+
+Falta polir todos os CSS. O back-end sofreu algumas alterações para fazer mais sentido

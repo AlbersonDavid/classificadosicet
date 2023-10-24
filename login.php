@@ -82,11 +82,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <header>
         <div class="logo">
-            <a href="index.php"><img src="assets/logo.png" alt="Logo da Página"></a>
+            <a href="index.php"><img src="assets/logoclassificados.png" alt="Logo da Página"></a>
         </div>
         <nav>
             <ul>
-                <li><a href="admin/admin.php"><img src="assets/admin-icon.png" alt="Admin"> Admin</a></li>
+                <li><a href="admin.php"><img src="assets/admin-icon.png" alt="Admin"> Admin</a></li>
                 <li><a href="registro.php"><img src="assets/user-icon.png" alt="Criar Usuário"> Criar Usuário</a></li>
                 <li><a href="login.php"><img src="assets/login-icon.png" alt="Login"> Login</a></li>
             </ul>
