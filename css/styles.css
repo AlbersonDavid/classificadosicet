@@ -3,6 +3,10 @@ body, h1, h2, h3, p, ul, li {
     padding: 0;
 }
 
+h2 {
+    text-align: center;
+}
+
 body {
     font-family: Arial, sans-serif;
     background-color: #64a36f;
@@ -13,11 +17,35 @@ header {
     background-color: white;
     color: white;
     text-align: center;
-    padding: 0px 0;
+    margin: 0px;
+    padding: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     transition: background-color 0.3s ease;
+}
+
+header a {
+    font-size: 18px;
+    transition: font-size 0.3s ease;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.logo {
+    margin-left: 40px;
+}
+
+.logo-li {
+    margin-right: 30px;
+}
+
+.logo-li img {
+    margin-right: 10px;
+}
+
+.logo img {
+    max-height: 100px;
 }
 
 header h1 {
@@ -25,6 +53,8 @@ header h1 {
     font-weight: bold;
     transition: font-size 0.3s ease;
 }
+
+
 
 nav ul {
     list-style: none;
@@ -46,9 +76,7 @@ nav ul li a img {
     height: auto;
 }
 
-.logo img {
-    max-height: 100px;
-}
+
 
 .menu {
     color: black;
@@ -71,7 +99,7 @@ nav ul li a img {
 
 .search-form input[type="text"] {
     padding: 10px;
-    width: 70%;
+    width: 40%;
     border: none;
     border-radius: 5px;
     transition: width 0.3s ease;
@@ -132,6 +160,7 @@ nav ul li a img {
     margin-top: 20px;
     background-color: white;
     padding: 20px;
+    margin: 20px;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -228,11 +257,18 @@ nav ul li a img {
     background-color: #64a36f;
 }
 
+.container {
+    margin-top: 20px;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 5px;
+}
+
 
 .grid-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
+    gap: 50px;
     justify-content: center;
     flex-grow: 1; 
 }
@@ -374,6 +410,27 @@ footer p {
     color: black;
     text-decoration: none;
     transition: color 0.3s ease;
+}
+
+.categoria {
+    padding: 10px;
+    margin: 1px;
+    text-align: center;
+    margin-top: 20px;
+    transition: margin-top 0.3s ease;
+}
+
+.categoria {
+    text-align: center;
+    transition: margin-top 0.3s ease;
+    background-color: white;
+    color: black;
+    border: none;
+    padding: 10px 1px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 150px;
 }
 
 /* Estilos responsivos */

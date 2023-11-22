@@ -29,10 +29,17 @@ $recentProducts = $stmtRecentProducts->fetchAll(PDO::FETCH_ASSOC);
         <div class="logo">
             <a href="index.php"><img src="assets/logoclassificados.png" alt="Logo da Página"></a>
         </div>
-        <div>
-            <nav>
-                <div class="box">
-                    <select id="categoryDropdown" onchange="redirectToCategory()">
+        <nav>
+            <ul class="logo-li">
+                <li><a href="login.php"><img src="assets/login-iconblack.png" alt="Login">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <form method="post" action="pesquisa.php" class="search-form">
+        <input type="text" name="pesquisa" placeholder="Pesquisar por título ou descrição">
+        <input type="submit" value="Pesquisar">
+                    <select class="categoria" id="categoryDropdown" onchange="redirectToCategory()">
                         <option value="all">Todas as Categorias</option>
                         <option>Categorias</option>
                         <option>Livros e Materiais Acadêmicos</option>
@@ -49,19 +56,6 @@ $recentProducts = $stmtRecentProducts->fetchAll(PDO::FETCH_ASSOC);
                         <option>Coisas para Casa</option>
                         <option>Outras Coisas</option>
                     </select>
-                </div>
-            </nav>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="login.php"><img src="assets/login-iconblack.png" alt="Login"> Login</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <form method="post" action="pesquisa.php" class="search-form">
-        <input type="text" name="pesquisa" placeholder="Pesquisar por título ou descrição">
-        <input type="submit" value="Pesquisar">
     </form>
 
     

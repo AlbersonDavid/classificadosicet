@@ -113,9 +113,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
         <nav>
             <ul>
-                <li><a href="admin.php"><img src="assets/admin-icon.png" alt="Admin"> Admin</a></li>
-                <li><a href="registro.php"><img src="assets/user-icon.png" alt="Criar Usuário"> Criar Usuário</a></li>
-                <li><a href="login.php"><img src="assets/login-icon.png" alt="Login"> Login</a></li>
             </ul>
         </nav>
     </header>
