@@ -57,12 +57,8 @@ $recentProducts = $stmtRecentProducts->fetchAll(PDO::FETCH_ASSOC);
                         <option>Outras Coisas</option>
                     </select>
     </form>
-
     
-  <div class="banner">
-    <img src="/imagens/banner.jpg" alt="Banner Ufam">
-</div>
-    
+    <div class="banner">
     <section id="recent-products">
         <h2>Produtos Recentes</h2>
         <div class="slick-carousel">
@@ -78,6 +74,7 @@ $recentProducts = $stmtRecentProducts->fetchAll(PDO::FETCH_ASSOC);
             ?>
         </div>
     </section>
+    </div>
 
     <div class="container">
         <section id="produtos">
