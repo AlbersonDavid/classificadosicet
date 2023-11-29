@@ -7,9 +7,13 @@ h2 {
     text-align: center;
 }
 
+.produto {
+    color: white;
+}
+
 body {
     font-family: Arial, sans-serif;
-    background-color: #64a36f;
+    background-color: #04394e;
     transition: background-color 0.3s ease;
 }
 
@@ -33,7 +37,7 @@ header a {
 }
 
 .logo {
-    margin-left: 40px;
+    margin-left: 50px;
 }
 
 .logo-li {
@@ -46,6 +50,9 @@ header a {
 
 .logo img {
     max-height: 100px;
+    width: 140px;
+    margin-top: -8px;
+    margin-bottom: -13px;
 }
 
 header h1 {
@@ -184,7 +191,7 @@ nav ul li a img {
 }
 
 .slick-carousel .carousel-item {
-     background: rgba(100, 163, 111, 0.7); 
+     background: #00875e; 
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -327,7 +334,7 @@ nav ul li a img {
 
 .whatsapp-button {
     display: inline-block;
-    background-color: #64a36f; 
+    background-color: #00875e; 
     color: #fff;
     padding: 10px 15px;
     border-radius: 5px;
@@ -341,7 +348,7 @@ nav ul li a img {
 }
 
 .whatsapp-button:hover {
-    background-color: #64a36f; 
+    background-color: #00875e; 
 }
 
 .spacer {
@@ -355,8 +362,8 @@ nav ul li a img {
     bottom: 20px;
     right: 20px;
     background-color: #fff; 
-    color: #64a36f;
-    border: 2px solid #64a36f; 
+    color: #00875e;
+    border: 2px solid #00875e; 
     border-radius: 50%;
     padding: 15px 20px;
     font-size: 20px;

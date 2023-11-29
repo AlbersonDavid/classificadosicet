@@ -85,7 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <a href="index.php"><img src="assets/logoclassificados.png" alt="Logo da Página"></a>
         </div>
         <nav>
-            <ul>
+            <ul class="logo-li">
                 <li><a href="admin.php"><img src="assets/admin-icon.png" alt="Admin"> Admin</a></li>
             </ul>
         </nav>

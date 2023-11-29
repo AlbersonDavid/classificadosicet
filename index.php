@@ -31,7 +31,7 @@ $recentProducts = $stmtRecentProducts->fetchAll(PDO::FETCH_ASSOC);
         </div>
         <nav>
             <ul class="logo-li">
-                <li><a href="login.php"><img src="assets/login-iconblack.png" alt="Login">Login</a></li>
+                <li><a href="login.php"><img src="assets/login.png" alt="Login">Login</a></li>
             </ul>
         </nav>
     </header>
@@ -79,7 +79,7 @@ $recentProducts = $stmtRecentProducts->fetchAll(PDO::FETCH_ASSOC);
     <div class="container">
         <section id="produtos">
             <br>
-            <h2>Produtos</h2><br>
+            <h2 class="produto">Produtos</h2><br>
             <div class="grid-container">
                 <?php
                 // Verifica se uma categoria foi selecionada
