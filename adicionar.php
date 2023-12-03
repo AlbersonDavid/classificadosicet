@@ -55,19 +55,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <header>
         <div class="logo">
-            <a href="index.php"><img src="assets/logo.png" alt="Logo da Página"></a>
+            <a href="index.php"><img src="assets/logoclassificados.png" alt="Logo da Página"></a>
         </div>
         <nav>
-            <ul>
-                <li><a href="admin/admin.php"><img src="assets/admin-icon.png" alt="Admin"> Admin</a></li>
-                <li><a href="registro.php"><img src="assets/user-icon.png" alt="Criar Usuário"> Criar Usuário</a></li>
-                <li><a href="login.php"><img src="assets/login-icon.png" alt="Login"> Login</a></li>
+            <ul class="logo-li">
+                <li><a href="perfil.php"><img src="assets/login-icon.png" alt="Perfil">Perfil</a></li>
             </ul>
         </nav>
     </header>
     
     
-    <br><h1>Adicionar Produto</h1>
+    <br><h1 class="produto">Adicionar Produto</h1>
     <form method="post" enctype="multipart/form-data">
         <label for="categoria">Categoria:</label>
         <select id="categoria" name="categoria">
@@ -108,7 +106,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <a href="produtos.php">Voltar para a lista de produtos</a>
     </p><br>
     
-    <footer class="footer-container">
+    <footer>
             <p>&copy; Classificados ICET - Projeto SUPER </p>
     </footer>
 </body>

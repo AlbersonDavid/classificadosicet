@@ -51,25 +51,6 @@ header a {
 .logo img {
     max-height: 100px;
     width: 140px;
-    margin-top: -8px;
-    margin-bottom: -13px;
-}.logo {
-    margin-left: 50px;
-}
-
-.logo-li {
-    margin-right: 30px;
-}
-
-.logo-li img {
-    margin-right: 10px;
-}
-
-.logo img {
-    max-height: 100px;
-    width: 140px;
-    margin-top: -8px;
-    margin-bottom: -13px;
 }
 
 header h1 {

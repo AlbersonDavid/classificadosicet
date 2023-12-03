@@ -51,8 +51,6 @@ header a {
 .logo img {
     max-height: 100px;
     width: 140px;
-    margin-top: -8px;
-    margin-bottom: -13px;
 }
 
 header h1 {
@@ -70,7 +68,7 @@ nav li {
 }
 
 nav a {
-    color: white;
+    color: black;
     text-decoration: none;
 }
 
@@ -126,14 +124,17 @@ p a {
     text-align: center;
     margin-top: 10px;
     text-decoration: none;
-    color: #586f0f;
+    color: #00875e;
 }
 
-.footer-container {
-    background-color: #64a36f;
+footer {
+    background-color: #00875e;
     color: white;
     text-align: center;
     padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 
 footer a {
