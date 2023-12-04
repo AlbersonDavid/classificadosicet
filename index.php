@@ -3,7 +3,7 @@
 include 'includes/conexao.php';
 
 // Consulta SQL para recuperar os produtos mais recentes (por exemplo, os 5 mais recentes)
-$sqlRecentProducts = "SELECT * FROM produtos ORDER BY id DESC LIMIT 5";
+$sqlRecentProducts = "SELECT * FROM produtos ORDER BY id DESC LIMIT 1";
 $stmtRecentProducts = $conn->prepare($sqlRecentProducts);
 $stmtRecentProducts->execute();
 $recentProducts = $stmtRecentProducts->fetchAll(PDO::FETCH_ASSOC);
@@ -14,172 +14,242 @@ $recentProducts = $stmtRecentProducts->fetchAll(PDO::FETCH_ASSOC);
 <html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8">
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#00875e">
+
+    <!-- CSS  -->
+    <link href="min/plugin-min.css" type="text/css" rel="stylesheet">
+    <link href="min/custom-min.css" type="text/css" rel="stylesheet">
+    <link href="css/styles.css" type="text/css" rel="stylesheet">
     <link rel="icon" href="assets/Icon.png" type="image/png">
     <title>Classificados ICET</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
-     <script type="text/javascript" src="js/main.js"></script>
-    <link rel="stylesheet" href="css/styles.css">
 </head>
 
-<body>
-    <header>
-        <div class="logo">
-            <a href="index.php"><img src="assets/logoclassificados.png" alt="Logo da Página"></a>
-        </div>
-        <nav>
-            <ul class="logo-li">
-                <li><a href="login.php"><img src="assets/login.png" alt="Login">Login</a></li>
-            </ul>
-        </nav>
-    </header>
+<body id="top" class="scrollspy">
 
-    <form method="post" action="pesquisa.php" class="search-form">
-        <input type="text" name="pesquisa" placeholder="Pesquisar por título ou descrição">
-        <input type="submit" value="Pesquisar">
-                    <select class="categoria" id="categoryDropdown" onchange="redirectToCategory()">
-                        <option value="all">Todas as Categorias</option>
-                        <option>Categorias</option>
-                        <option>Livros e Materiais Acadêmicos</option>
-                        <option>Moradia Estudantil</option>
-                        <option>Equipamentos e Eletrônicos</option>
-                        <option>Serviços e Aulas</option>
-                        <option>Empregos e Estágios</option>
-                        <option>Eventos e Grupos de Estudo</option>
-                        <option>Móveis e Itens Domésticos</option>
-                        <option>Bicicletas e Meios de Transporte Alternativos</option>
-                        <option>Roupas, Calçados e Acessórios</option>
-                        <option>Equipamentos e Instrumentos</option>
-                        <option>Diversos e Outros Itens</option>
-                        <option>Coisas para Casa</option>
-                        <option>Outras Coisas</option>
-                    </select>
-    </form>
-    
-    <div class="banner">
-    <section id="recent-products">
-        <h2>Produtos Recentes</h2>
-        <div class="slick-carousel">
-            <?php
-            foreach ($recentProducts as $product) {
-                echo '<div class="carousel-item">';
-                echo '<img src="imagens/' . $product['imagem'] . '" alt="' . $product['titulo'] . '">';
-                echo '<h3>' . $product['titulo'] . '</h3>';
-                echo '<p>Tipo: ' . ucfirst($product['tipo']) . '</p>';
-                
-                echo '</div>';
-            }
-            ?>
-        </div>
-    </section>
+    <!-- Pre Loader -->
+    <div id="loader-wrapper">
+        <div id="loader"></div>
+
+        <div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+
     </div>
 
-    <div class="container">
-        <section id="produtos">
-            <br>
-            <h2 class="produto">Produtos</h2><br>
-            <div class="grid-container">
-                <?php
-                // Verifica se uma categoria foi selecionada
-                $categoria_id = isset($_GET['categoria_id']) ? $_GET['categoria_id'] : null;
-
-                // Consulta o SQL para recuperar produtos por categoria ou todos os produtos
-                $sqlProdutos = "SELECT produtos.*, usuarios.nome AS nome_usuario, usuarios.foto_perfil
-FROM produtos
-INNER JOIN usuarios ON produtos.id_usuario = usuarios.id";
-
-
-                if ($categoria_id) {
-                    $sqlProdutos .= " WHERE produtos.categoria = :categoria";
-                }
-
-                $stmtProdutos = $conn->prepare($sqlProdutos);
-
-                if ($categoria_id) {
-                    $stmtProdutos->bindParam(':categoria', $categorias[$categoria_id - 1]['nome'], PDO::PARAM_STR);
-                }
-
-                $stmtProdutos->execute();
-                $produtos = $stmtProdutos->fetchAll(PDO::FETCH_ASSOC);
-
-if (count($produtos) > 0) {
-    foreach ($produtos as $produto) {
-        echo '<div class="grid-item">';
-        echo '<img src="imagens/' . $produto['imagem'] . '" alt="Imagem do Produto">';
-        echo '<h3>' . $produto['titulo'] . '</h3>';
-        echo '<p>' . $produto['descricao'] . '</p>';
-        echo '<p>Preço: R$ ' . number_format($produto['preco'], 2, ',', '.') . '</p>';
-        echo '<p><strong>Vendedor:</strong> ' . $produto['nome_usuario'] . '</p>'; 
-        echo '<p>Tipo: ' . ucfirst($produto['tipo']) . '</p>';
-        echo '<div class="profile-icon-container">'; 
-        echo '<img src="imagens/' . $produto['foto_perfil'] . '" alt="Perfil do Vendedor" class="profile-icon">';
-        echo '</div>';
-        echo '<a href="https://wa.me/' . $produto['whatsapp_contato'] . '?text=' . urlencode('Gostaria do Item: ' . $produto['titulo'] . ' - Preço: R$ ' . number_format($produto['preco'], 2, ',', '.')) . '" class="whatsapp-button" target="_blank"><img src="assets/whatsapp-icon.png" alt="WhatsApp"> Contatar via WhatsApp</a>';
-        echo '</div>';
-    }
-} else {
-    echo '<p>Nenhum produto encontrado.</p>';
-}
-                
-                ?>
+    <!--Navigation-->
+    <div class="navbar-fixed">
+        <nav id="nav_f" class="default_color" role="navigation">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <a href="index.php" id="logo-container" class="brand-logo">
+                        <img class="logo" src="assets/logoclassificados.png">
+                    </a>
+                    <ul class="right hide-on-med-and-down">
+                        <li><a href="login.php">Login</a></li>
+                    </ul>
+                    <ul id="nav-mobile" class="side-nav">
+                        <li><a href="#intro">Login</a></li>
+                    </ul>
+                    <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+                </div>
             </div>
-        </section>
+        </nav>
     </div>
 
-    <div class="spacer"></div>
-    
+    <!--Hero-->
+    <div class="section no-pad-bot" id="index-banner">
+        <div class="container">
+            <h1 class="text_h center header cd-headline letters type">
+                <span>Site</span>
+                <span class="cd-words-wrapper waiting">
+                    <b class="is-visible">de Compras</b>
+                    <b>de Vendas</b>
+                    <b>Universitario</b>
+                </span>
+            </h1>
+        </div>
+    </div>
 
-<button id="supportButton" class="support-button">Suporte</button>
-
-<div id="supportModal" class="modal">
-  <div class="modal-content">
-    <span class="close-button">&times;</span>
-    <h2>Entre em contato com o suporte</h2>
-    <form id="supportForm" action="enviar_email.php" method="post" enctype="multipart/form-data">
-      <label for="description">Descrição:</label>
-      <textarea id="description" name="description" rows="4" required></textarea>
-      <label for="screenshot">Captura de tela:</label>
-      <input type="file" id="screenshot" name="screenshot" accept="image/*" required>
-      <button type="submit">Enviar</button>
-    </form>
-  </div>
-</div>
-    
-    <script>
-
-function openSupportModal() {
-    var modal = document.getElementById("supportModal");
-    modal.style.display = "block";
-}
-
-function closeSupportModal() {
-    var modal = document.getElementById("supportModal");
-    modal.style.display = "none";
-}
+    <!--Intro and service-->
+    <div id="intro" class="section scrollspy">
+        <div class="container">
+            <div class="row">
+                <div class="col s12">
+                    <h2 class="center header text_h2"> Produtos Aunciados Recentemente </h2>
+                </div>
 
 
-document.getElementById("supportButton").addEventListener("click", openSupportModal);
+                <div class="col s12 m4 l4">
+                    <?php
+                    foreach ($recentProducts as $product) {
+                        echo '<div class="center promo promo-example">';
+                        echo '<img style="max-width: 200px;
+                        max-height: 150px;
+                        width: auto;
+                        height: auto;" src="imagens/' . $product['imagem'] . '" alt="' . $product['titulo'] . '">';
+                        echo '<h5 class="promo-caption>' . $product['titulo'] . '</h5>';
+                        echo '<p class="light center>' . ucfirst($product['titulo']) . '</p>';
 
+                        echo '</div>';
+                    }
+                    ?>
+                </div>
+                <div class="col s12 m4 l4">
+                    <?php
+                    foreach ($recentProducts as $product) {
+                        echo '<div class="center promo promo-example">';
+                        echo '<img style="max-width: 200px;
+                        max-height: 150px;
+                        width: auto;
+                        height: auto;" src="imagens/' . $product['imagem'] . '" alt="' . $product['titulo'] . '">';
+                        echo '<h5 class="promo-caption>' . $product['titulo'] . '</h5>';
+                        echo '<p class="light center>' . ucfirst($product['titulo']) . '</p>';
 
-document.getElementsByClassName("close-button")[0].addEventListener("click", closeSupportModal);
+                        echo '</div>';
+                    }
+                    ?>
+                </div>
+                <div class="col s12 m4 l4">
+                    <?php
+                    foreach ($recentProducts as $product) {
+                        echo '<div class="center promo promo-example">';
+                        echo '<img style="max-width: 200px;
+                        max-height: 150px;
+                        width: auto;
+                        height: auto;" src="imagens/' . $product['imagem'] . '" alt="' . $product['titulo'] . '">';
+                        echo '<h5 class="promo-caption>' . $product['titulo'] . '</h5>';
+                        echo '<p class="light center>' . ucfirst($product['titulo']) . '</p>';
 
+                        echo '</div>';
+                    }
+                    ?>
+                </div>
+                <!--<div class="col s12 m4 l4">
+                <div class="center promo promo-example">
+                    <i class="mdi-hardware-desktop-windows"></i>
+                    <h5 class="promo-caption">Fully responsive</h5>
+                    <p class="light center">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.</p>
+                </div>
+            </div>-->
+            </div>
+        </div>
+    </div>
 
-window.addEventListener("click", function (event) {
-    var modal = document.getElementById("supportModal");
-    if (event.target === modal) {
-        closeSupportModal();
-    }
-});
+    <!--Work-->
+    <div class="section scrollspy" id="work">
+        <div class="container">
+            <h2 class="header text_b">Produtos </h2>
+            <div class="row">
+                            <?php
+                            // Verifica se uma categoria foi selecionada
+                            $categoria_id = isset($_GET['categoria_id']) ? $_GET['categoria_id'] : null;
 
-        
-</script>
+                            // Consulta o SQL para recuperar produtos por categoria ou todos os produtos
+                            $sqlProdutos = "SELECT produtos.*, usuarios.nome AS nome_usuario, usuarios.foto_perfil FROM produtos INNER JOIN usuarios ON produtos.id_usuario = usuarios.id";
+                            if ($categoria_id) {
+                                $sqlProdutos .= " WHERE produtos.categoria = :categoria";
+                            }
+                            $stmtProdutos = $conn->prepare($sqlProdutos);
 
-     <footer class="footer-container">
-            <p>&copy; Classificados ICET - Projeto SUPER </p>
+                            if ($categoria_id) {
+                                $stmtProdutos->bindParam(':categoria', $categorias[$categoria_id - 1]['nome'], PDO::PARAM_STR);
+                            }
+
+                            $stmtProdutos->execute();
+                            $produtos = $stmtProdutos->fetchAll(PDO::FETCH_ASSOC);
+
+                            if (count($produtos) > 0) {
+                                foreach ($produtos as $produto) {
+                                    echo '<div class="col s12 m4 l4">';
+                                    echo '<div class="card">';
+                                    echo '<div class="card-image waves-effect waves-block waves-light">';
+                                    echo '<img class="activator" style="width: 350px; height: 300px;" src="imagens/' . $produto['imagem'] . '" alt="Imagem do Produto">';
+                                    echo '</div>';
+                                    echo '<div class="card-content">';
+                                    echo '<span class="card-title activator grey-text text-darken-4" style="font-size: 10px;">' . $produto['titulo'] . '<i class="mdi-navigation-more-vert right"></i></span>';
+                                    echo '</div>';
+                                    echo '<div class="card-reveal">';
+                                    echo '<span class="card-title grey-text text-darken-4">' . $produto['titulo'] . '<i class="mdi-navigation-close right"></i></span>';
+                                    echo '<p>' . $produto['descricao'] . '</p>';
+                                    echo '<p>Preço: R$ ' . number_format($produto['preco'], 2, ',', '.') . '</p>';
+                                    echo '<p><strong>Vendedor:</strong> ' . $produto['nome_usuario'] . '</p>';
+                                    echo '<p>Tipo: ' . ucfirst($produto['tipo']) . '</p>';
+                                    echo '<a href="https://wa.me/' . $produto['whatsapp_contato'] . '?text=' . urlencode('Gostaria do Item: ' . $produto['titulo'] . ' - Preço: R$ ' . number_format($produto['preco'], 2, ',', '.')) . '" class="whatsapp-button" target="_blank"><img src="assets/whatsapp-icon.png" alt="WhatsApp"> Contatar via WhatsApp</a>';
+                                    echo '</div>';
+                                    echo '</div>';
+                                    echo '</div>';
+                                }
+                            } else {
+                                echo '<p>Nenhum produto encontrado.</p>';
+                            }
+
+                            ?>
+                <!--<div class="col s12 m4 l4">
+                <div class="card">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img class="activator" src="img/project2.jpeg">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4">Project Title <i class="mdi-navigation-more-vert right"></i></span>
+                        <p><a href="#">Project link</a></p>
+                    </div>
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">Project Title <i class="mdi-navigation-close right"></i></span>
+                        <p>Here is some more information about this project that is only revealed once clicked on.</p>
+                    </div>
+                </div>
+            </div>-->
+            </div>
+        </div>
+    </div>
+
+    <!--Parallax-->
+    <div class="parallax-container">
+        <div class="parallax"><img src="assets/bannericet.png"></div>
+    </div>
+
+    <!--Footer-->
+    <footer id="contact" class="page-footer default_color scrollspy">
+        <div class="col s12">
+            <h4 class="center header text_h2" style="color: white;"> Fale Conosco </h4>
+        </div>
+        <div class="container">
+            <div class="center">
+                <div class="col l6 s12">
+                    <form class="col s12" action="contact.php" method="post">
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <i class="mdi-action-account-circle prefix white-text"></i>
+                                <input id="icon_prefix" name="name" type="text" class="validate white-text">
+                                <label for="icon_prefix" class="white-text">Seu Nome</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <i class="mdi-communication-email prefix white-text"></i>
+                                <input id="icon_email" name="email" type="email" class="validate white-text">
+                                <label for="icon_email" class="white-text">Seu E-mail</label>
+                            </div>
+                            <div class="input-field col s12">
+                                <i class="mdi-editor-mode-edit prefix white-text"></i>
+                                <textarea id="icon_prefix2" name="message" class="materialize-textarea white-text"></textarea>
+                                <label for="icon_prefix2" class="white-text">Sua Mensagem</label>
+                            </div>
+                            <div class="col offset-s7 s5">
+                                <button class="btn waves-effect waves-light red darken-1" type="submit">Enviar
+                                    <i class="mdi-content-send right white-text"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </footer>
+
+
+    <!--  Scripts-->
+    <script src="min/plugin-min.js"></script>
+    <script src="min/custom-min.js"></script>
+
 </body>
-</html>
