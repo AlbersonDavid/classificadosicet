@@ -2,6 +2,9 @@
 <html lang="pt-BR">
 <head>
     <link rel="icon" href="assets/Icon.png" type="image/png">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
     <title>Administradores</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

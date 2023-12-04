@@ -18,6 +18,9 @@ $recentProducts = $stmtRecentProducts->fetchAll(PDO::FETCH_ASSOC);
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
     <meta name="theme-color" content="#00875e">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
 
     <!-- CSS  -->
     <link href="min/plugin-min.css" type="text/css" rel="stylesheet">
