@@ -3,7 +3,7 @@
 include 'includes/conexao.php';
 
 // Consulta SQL para recuperar os produtos mais recentes (por exemplo, os 5 mais recentes)
-$sqlRecentProducts = "SELECT * FROM produtos ORDER BY id DESC LIMIT 3";
+$sqlRecentProducts = "SELECT * FROM produtos ORDER BY id DESC LIMIT 5";
 $stmtRecentProducts = $conn->prepare($sqlRecentProducts);
 $stmtRecentProducts->execute();
 $recentProducts = $stmtRecentProducts->fetchAll(PDO::FETCH_ASSOC);
@@ -82,27 +82,25 @@ $recentProducts = $stmtRecentProducts->fetchAll(PDO::FETCH_ASSOC);
                 <div class="col s12">
                     <h2 class="center header text_h2"> Produtos Aunciados Recentemente </h2>
                 </div>
+                <!--    <div class="col s12 m4 l4">
+                    <div class="banner">
+                        <section id="recent-products">
+                            <div class="slick-carousel">
+                                <?php
+                                foreach ($recentProducts as $product) {
+                                    echo '<div class="carousel-item">';
+                                    echo '<img src="imagens/' . $product['imagem'] . '" alt="' . $product['titulo'] . '">';
+                                    echo '<h3>' . $product['titulo'] . '</h3>';
+                                    echo '<p>Tipo: ' . ucfirst($product['tipo']) . '</p>';
 
-                <!--
-                <div>
-                    <?php
-                    if (count($recentProducts) > 0) {
-                        foreach ($recentProducts as $product) {
-                        echo '<div class="center promo promo-example">';
-                        echo '<img style="max-width: 200px;
-                        max-height: 150px;
-                        width: auto;
-                        height: auto;" src="imagens/' . $product['imagem'] . '" alt="' . $product['titulo'] . '">';
-                        echo '<h5 class="promo-caption>' . $product['titulo'] . '</h5>';
-                        echo '<p class="light center>' . ucfirst($product['titulo']) . '</p>';
-                        echo '</div>';
-                        }
-                    } else {
-                        echo '<p>Nenhum produto encontrado.</p>';
-                    }
-                    ?>
+                                    echo '</div>';
+                                }
+                                ?>
+                            </div>
+                        </section>
+                    </div>
                 </div>
-                
+
                 <div class="col s12 m4 l4">
                 <div class="center promo promo-example">
                     <i class="mdi-hardware-desktop-windows"></i>
@@ -114,55 +112,79 @@ $recentProducts = $stmtRecentProducts->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </div>
 
+    <div>
+        <form method="post" action="pesquisa.php" class="search-form">
+            <input type="text" name="pesquisa" placeholder="Pesquisar por título ou descrição">
+            <input type="submit" value="Pesquisar">
+            <!--<select class="categoria" id="categoryDropdown" onchange="redirectToCategory()">
+                <option value="all">Todas as Categorias</option>
+                <option>Categorias</option>
+                <option>Livros e Materiais Acadêmicos</option>
+                <option>Moradia Estudantil</option>
+                <option>Equipamentos e Eletrônicos</option>
+                <option>Serviços e Aulas</option>
+                <option>Empregos e Estágios</option>
+                <option>Eventos e Grupos de Estudo</option>
+                <option>Móveis e Itens Domésticos</option>
+                <option>Bicicletas e Meios de Transporte Alternativos</option>
+                <option>Roupas, Calçados e Acessórios</option>
+                <option>Equipamentos e Instrumentos</option>
+                <option>Diversos e Outros Itens</option>
+                <option>Coisas para Casa</option>
+                <option>Outras Coisas</option>
+            </select>-->
+        </form>
+    </div>
+
     <!--Work-->
     <div class="section scrollspy" id="work">
         <div class="container">
             <h2 class="header text_b">Produtos </h2>
             <div class="row">
-                            <?php
-                            // Verifica se uma categoria foi selecionada
-                            $categoria_id = isset($_GET['categoria_id']) ? $_GET['categoria_id'] : null;
+                <?php
+                // Verifica se uma categoria foi selecionada
+                $categoria_id = isset($_GET['categoria_id']) ? $_GET['categoria_id'] : null;
 
-                            // Consulta o SQL para recuperar produtos por categoria ou todos os produtos
-                            $sqlProdutos = "SELECT produtos.*, usuarios.nome AS nome_usuario, usuarios.foto_perfil FROM produtos INNER JOIN usuarios ON produtos.id_usuario = usuarios.id";
-                            if ($categoria_id) {
-                                $sqlProdutos .= " WHERE produtos.categoria = :categoria";
-                            }
-                            $stmtProdutos = $conn->prepare($sqlProdutos);
+                // Consulta o SQL para recuperar produtos por categoria ou todos os produtos
+                $sqlProdutos = "SELECT produtos.*, usuarios.nome AS nome_usuario, usuarios.foto_perfil FROM produtos INNER JOIN usuarios ON produtos.id_usuario = usuarios.id";
+                if ($categoria_id) {
+                    $sqlProdutos .= " WHERE produtos.categoria = :categoria";
+                }
+                $stmtProdutos = $conn->prepare($sqlProdutos);
 
-                            if ($categoria_id) {
-                                $stmtProdutos->bindParam(':categoria', $categorias[$categoria_id - 1]['nome'], PDO::PARAM_STR);
-                            }
+                if ($categoria_id) {
+                    $stmtProdutos->bindParam(':categoria', $categorias[$categoria_id - 1]['nome'], PDO::PARAM_STR);
+                }
 
-                            $stmtProdutos->execute();
-                            $produtos = $stmtProdutos->fetchAll(PDO::FETCH_ASSOC);
+                $stmtProdutos->execute();
+                $produtos = $stmtProdutos->fetchAll(PDO::FETCH_ASSOC);
 
-                            if (count($produtos) > 0) {
-                                foreach ($produtos as $produto) {
-                                    echo '<div class="col s12 m4 l4">';
-                                    echo '<div class="card">';
-                                    echo '<div class="card-image waves-effect waves-block waves-light">';
-                                    echo '<img class="activator" style="width: 420px; height: 350px;" src="imagens/' . $produto['imagem'] . '" alt="Imagem do Produto">';
-                                    echo '</div>';
-                                    echo '<div class="card-content">';
-                                    echo '<span class="card-title activator grey-text text-darken-4" style="font-size: 12px;">' . $produto['titulo'] . '<i class="mdi-navigation-more-vert right"></i></span>';
-                                    echo '</div>';
-                                    echo '<div class="card-reveal">';
-                                    echo '<span class="card-title grey-text text-darken-4">' . $produto['titulo'] . '<i class="mdi-navigation-close right"></i></span>';
-                                    echo '<p>' . $produto['descricao'] . '</p>';
-                                    echo '<p>Preço: R$ ' . number_format($produto['preco'], 2, ',', '.') . '</p>';
-                                    echo '<p><strong>Vendedor:</strong> ' . $produto['nome_usuario'] . '</p>';
-                                    echo '<p>Tipo: ' . ucfirst($produto['tipo']) . '</p>';
-                                    echo '<a href="https://wa.me/' . $produto['whatsapp_contato'] . '?text=' . urlencode('Gostaria do Item: ' . $produto['titulo'] . ' - Preço: R$ ' . number_format($produto['preco'], 2, ',', '.')) . '" class="whatsapp-button" target="_blank"><img src="assets/whatsapp-icon.png" alt="WhatsApp"> Contatar via WhatsApp</a>';
-                                    echo '</div>';
-                                    echo '</div>';
-                                    echo '</div>';
-                                }
-                            } else {
-                                echo '<p>Nenhum produto encontrado.</p>';
-                            }
+                if (count($produtos) > 0) {
+                    foreach ($produtos as $produto) {
+                        echo '<div class="col s12 m4 l4">';
+                        echo '<div class="card">';
+                        echo '<div class="card-image waves-effect waves-block waves-light">';
+                        echo '<img class="activator" style="width: 420px; height: 350px;" src="imagens/' . $produto['imagem'] . '" alt="Imagem do Produto">';
+                        echo '</div>';
+                        echo '<div class="card-content">';
+                        echo '<span class="card-title activator grey-text text-darken-4" style="font-size: 12px;">' . $produto['titulo'] . '<i class="mdi-navigation-more-vert right"></i></span>';
+                        echo '</div>';
+                        echo '<div class="card-reveal">';
+                        echo '<span class="card-title grey-text text-darken-4">' . $produto['titulo'] . '<i class="mdi-navigation-close right"></i></span>';
+                        echo '<p>' . $produto['descricao'] . '</p>';
+                        echo '<p>Preço: R$ ' . number_format($produto['preco'], 2, ',', '.') . '</p>';
+                        echo '<p><strong>Vendedor:</strong> ' . $produto['nome_usuario'] . '</p>';
+                        echo '<p>Tipo: ' . ucfirst($produto['tipo']) . '</p>';
+                        echo '<a href="https://wa.me/' . $produto['whatsapp_contato'] . '?text=' . urlencode('Gostaria do Item: ' . $produto['titulo'] . ' - Preço: R$ ' . number_format($produto['preco'], 2, ',', '.')) . '" class="whatsapp-button" target="_blank"><img src="assets/whatsapp-icon.png" alt="WhatsApp"> Contatar via WhatsApp</a>';
+                        echo '</div>';
+                        echo '</div>';
+                        echo '</div>';
+                    }
+                } else {
+                    echo '<p>Nenhum produto encontrado.</p>';
+                }
 
-                            ?>
+                ?>
                 <!--<div class="col s12 m4 l4">
                 <div class="card">
                     <div class="card-image waves-effect waves-block waves-light">
