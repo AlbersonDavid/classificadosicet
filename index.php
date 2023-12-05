@@ -3,7 +3,7 @@
 include 'includes/conexao.php';
 
 // Consulta SQL para recuperar os produtos mais recentes (por exemplo, os 5 mais recentes)
-$sqlRecentProducts = "SELECT * FROM produtos ORDER BY id DESC LIMIT 1";
+$sqlRecentProducts = "SELECT * FROM produtos ORDER BY id DESC LIMIT 3";
 $stmtRecentProducts = $conn->prepare($sqlRecentProducts);
 $stmtRecentProducts->execute();
 $recentProducts = $stmtRecentProducts->fetchAll(PDO::FETCH_ASSOC);
@@ -53,7 +53,7 @@ $recentProducts = $stmtRecentProducts->fetchAll(PDO::FETCH_ASSOC);
                         <li><a href="login.php">Login</a></li>
                     </ul>
                     <ul id="nav-mobile" class="side-nav">
-                        <li><a href="#intro">Login</a></li>
+                        <li><a href="login.php">Login</a></li>
                     </ul>
                     <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
                 </div>
@@ -83,10 +83,11 @@ $recentProducts = $stmtRecentProducts->fetchAll(PDO::FETCH_ASSOC);
                     <h2 class="center header text_h2"> Produtos Aunciados Recentemente </h2>
                 </div>
 
-
-                <div class="col s12 m4 l4">
+                <!--
+                <div>
                     <?php
-                    foreach ($recentProducts as $product) {
+                    if (count($recentProducts) > 0) {
+                        foreach ($recentProducts as $product) {
                         echo '<div class="center promo promo-example">';
                         echo '<img style="max-width: 200px;
                         max-height: 150px;
@@ -94,42 +95,15 @@ $recentProducts = $stmtRecentProducts->fetchAll(PDO::FETCH_ASSOC);
                         height: auto;" src="imagens/' . $product['imagem'] . '" alt="' . $product['titulo'] . '">';
                         echo '<h5 class="promo-caption>' . $product['titulo'] . '</h5>';
                         echo '<p class="light center>' . ucfirst($product['titulo']) . '</p>';
-
                         echo '</div>';
+                        }
+                    } else {
+                        echo '<p>Nenhum produto encontrado.</p>';
                     }
                     ?>
                 </div>
+                
                 <div class="col s12 m4 l4">
-                    <?php
-                    foreach ($recentProducts as $product) {
-                        echo '<div class="center promo promo-example">';
-                        echo '<img style="max-width: 200px;
-                        max-height: 150px;
-                        width: auto;
-                        height: auto;" src="imagens/' . $product['imagem'] . '" alt="' . $product['titulo'] . '">';
-                        echo '<h5 class="promo-caption>' . $product['titulo'] . '</h5>';
-                        echo '<p class="light center>' . ucfirst($product['titulo']) . '</p>';
-
-                        echo '</div>';
-                    }
-                    ?>
-                </div>
-                <div class="col s12 m4 l4">
-                    <?php
-                    foreach ($recentProducts as $product) {
-                        echo '<div class="center promo promo-example">';
-                        echo '<img style="max-width: 200px;
-                        max-height: 150px;
-                        width: auto;
-                        height: auto;" src="imagens/' . $product['imagem'] . '" alt="' . $product['titulo'] . '">';
-                        echo '<h5 class="promo-caption>' . $product['titulo'] . '</h5>';
-                        echo '<p class="light center>' . ucfirst($product['titulo']) . '</p>';
-
-                        echo '</div>';
-                    }
-                    ?>
-                </div>
-                <!--<div class="col s12 m4 l4">
                 <div class="center promo promo-example">
                     <i class="mdi-hardware-desktop-windows"></i>
                     <h5 class="promo-caption">Fully responsive</h5>
@@ -168,10 +142,10 @@ $recentProducts = $stmtRecentProducts->fetchAll(PDO::FETCH_ASSOC);
                                     echo '<div class="col s12 m4 l4">';
                                     echo '<div class="card">';
                                     echo '<div class="card-image waves-effect waves-block waves-light">';
-                                    echo '<img class="activator" style="width: 350px; height: 300px;" src="imagens/' . $produto['imagem'] . '" alt="Imagem do Produto">';
+                                    echo '<img class="activator" style="width: 420px; height: 350px;" src="imagens/' . $produto['imagem'] . '" alt="Imagem do Produto">';
                                     echo '</div>';
                                     echo '<div class="card-content">';
-                                    echo '<span class="card-title activator grey-text text-darken-4" style="font-size: 10px;">' . $produto['titulo'] . '<i class="mdi-navigation-more-vert right"></i></span>';
+                                    echo '<span class="card-title activator grey-text text-darken-4" style="font-size: 12px;">' . $produto['titulo'] . '<i class="mdi-navigation-more-vert right"></i></span>';
                                     echo '</div>';
                                     echo '<div class="card-reveal">';
                                     echo '<span class="card-title grey-text text-darken-4">' . $produto['titulo'] . '<i class="mdi-navigation-close right"></i></span>';
