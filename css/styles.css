@@ -1,3 +1,4 @@
+/*------------------------------------------------------------------------------------*/
 .categoria {
     padding: 10px;
     margin: 1px;
@@ -256,14 +257,14 @@
     background-color: #64a36f;
 }
 
+/*------------------------------------------------------------------------------------*/
+
 .logo {
-    max-width: 130px;
-    max-height: 80px;
+    max-width: 120px;
+    max-height: 70px;
     width: auto;
     height: auto;
 }
-
-
 
 .default_color{background-color: #00875e !important}
 

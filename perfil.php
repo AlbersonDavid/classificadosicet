@@ -31,7 +31,7 @@ $fotoPerfil = $row["foto_perfil"];
 $userId = $row["id"];
 
 // Consulta para recuperar os produtos do usuário
-$sqlProdutos = "SELECT id, titulo FROM produtos WHERE id_usuario = :id_usuario";
+$sqlProdutos = "SELECT id, titulo, imagem FROM produtos WHERE id_usuario = :id_usuario";
 $stmtProdutos = $conn->prepare($sqlProdutos);
 $stmtProdutos->bindValue(":id_usuario", $userId, PDO::PARAM_INT);
 if (!$stmtProdutos->execute()) {
@@ -43,79 +43,140 @@ $resultProdutos = $stmtProdutos->fetchAll(PDO::FETCH_ASSOC);
 
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#00875e">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
+
+    <!-- CSS  -->
+    <link href="min/plugin-min.css" type="text/css" rel="stylesheet">
+    <link href="min/custom-min.css" type="text/css" rel="stylesheet">
+    <link href="css/perfil.css" type="text/css" rel="stylesheet">
     <link rel="icon" href="assets/Icon.png" type="image/png">
-    <title>Perfil do Usuário</title>
-    <link rel="stylesheet" href="css/perfil.css">
+    <title>Perfil</title>
 </head>
-<body>
-    <header>
-        <div class="logo">
-            <a href="index.php"><img src="assets/logoclassificados.png" alt="Logo da Página"></a>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="categorias.php"><img src="assets/categorias-icon.png" alt="Categorias"> Categorias</a></li>
-                <li><a href="produtos.php"><img src="assets/produtos-icon.png" alt="Produtos"> Produtos</a></li>
-                <li><a href="logout.php"><img src="assets/logout-icon.png" alt="Logout"> Sair</a></li>
-            </ul>
+
+<body id="top" class="scrollspy">
+
+
+    <!-- Pre Loader -->
+    <div id="loader-wrapper">
+        <div id="loader"></div>
+
+        <div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+
+    </div>
+
+    <!--Navigation-->
+    <div class="navbar-fixed">
+        <nav id="nav_f" class="default_color" role="navigation">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <a href="index.php" id="logo-container" class="brand-logo">
+                        <img class="logo" src="assets/logoclassificados.png">
+                    </a>
+                    <ul class="right hide-on-med-and-down">
+                        <li><a href="logout.php">Logout</a></li>
+                    </ul>
+                    <ul id="nav-mobile" class="side-nav">
+                        <li><a href="logout.php">Logout</a></li>
+                    </ul>
+                    <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+                </div>
+            </div>
         </nav>
-    </header>
+    </div>
 
-    <br><h1>Perfil do Usuário</h1>
-
-    <main>
-        <section id="user-profile">
-            <h2>Bem-vindo, <?php echo $nomeUsuario; ?></h2>
-           <?php if (!empty($fotoPerfil)) { ?>
-    <img src="imagens/<?php echo $fotoPerfil; ?>" alt="Foto de Perfil">
-<?php } else { ?>
-    <p>Você ainda não possui uma foto de perfil. <a href="alterar_foto_perfil.php">Adicionar foto</a></p>
-<?php } ?>
-
-
-            <p>Aqui você pode visualizar e gerenciar suas informações de perfil e produtos cadastrados.</p>
-            
-            <p>
-                <a href="adicionar.php">Adicionar produtos</a>
-            </p>
-
-            <h3>Seus Produtos:</h3>
-            <ul>
-                <?php foreach ($resultProdutos as $produto) { ?>
-                    <li>
-                        <?php echo $produto["titulo"]; ?> -
-                        <a href="editar.php?id=<?php echo $produto["id"]; ?>">Editar</a> |
-                        <a href="excluir.php?id=<?php echo $produto["id"]; ?>">Excluir</a>
-                    </li>
-                <?php } ?>
-            </ul>
-        </section>
-        <section id="change-password">
-            <h3>Alterar Senha</h3>
-            <form action="alterar_senha.php" method="post">
-                <div class="form-group">
-                    <label>Nova Senha:</label>
-                    <input type="password" name="nova_senha" required>
+    <div id="intro" class="section scrollspy">
+        <div class="container">
+            <div class="row">
+                <div style="width: 60%;" class="col s12 m4 l4">
+                    <h2 style="text-align: left;" class="center header text_h2"> Perfil do Usuário <br> Bem-vindo, <?php echo $nomeUsuario; ?> </h2>
                 </div>
-                <div class="form-group">
-                    <label>Confirme a Nova Senha:</label>
-                    <input type="password" name="confirmar_senha" required>
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="Alterar Senha">
-                </div>
-            </form>
-        </section>
-    </main>
 
-    <footer class="footer-container">
-        <p>&copy; Classificados ICET - Projeto SUPER</p>
+                <div style="float: right;" class="col s12 m4 l4" id="user-profile">
+                    <?php if (!empty($fotoPerfil)) { ?>
+                        <img src="imagens/<?php echo $fotoPerfil; ?>" alt="Foto de Perfil">
+                    <?php } else { ?>
+                        <p>Você ainda não possui uma foto de perfil. <a href="alterar_foto_perfil.php">Adicionar foto</a></p>
+                    <?php } ?>
+                </div>
+
+                <div class="col s12">
+                    <div class="center promo promo-example">
+                        <h5 class="promo-caption">Aqui você pode visualizar e gerenciar suas informações de perfil e produtos cadastrados.</h5>
+                        <p class="light center">
+                            <a href="adicionar.php">Adicionar produtos</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="col s12">
+                    <h2 class="center header text_h2"> Seus Produtos </h2>
+                </div>
+                <?php foreach ($resultProdutos as $produto) {
+                    echo '<div class="col s12 m4 l4">';
+                    echo '<div class="card">';
+                    echo '<div class="card-image waves-effect waves-block waves-light">';
+                    echo '<img class="activator" style="width: 420px; height: 350px;" src="imagens/' . $produto['imagem'] . '" alt="Imagem do Produto">';
+                    echo '</div>';
+                    echo '<div class="card-content">';
+                    echo '</div>';
+                    echo '<div class="card-reveal">';
+                    echo '<span class="card-title grey-text text-darken-4">' . $produto['titulo'] . '<i class="mdi-navigation-close right"></i></span>';
+                    echo '<a href="editar.php?id=$produto["id"]">Editar</a>';
+                    echo '<a href="excluir.php?id=$produto["id"]">Excluir</a>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '</div>';
+                } ?>
+            </div>
+        </div>
+    </div>
+
+    <!--Work-->
+    <div class="section scrollspy" id="work">
+        <div class="col s12">
+            <div class="center promo promo-example">
+                <main>
+                    <section id="change-password">
+                        <h3>Alterar Senha</h3>
+                        <form action="alterar_senha.php" method="post">
+                            <div class="form-group">
+                                <label>Nova Senha: <br></label>
+                                <input type="password" name="nova_senha" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Confirme a Nova Senha: <br></label>
+                                <input type="password" name="confirmar_senha" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Alterar Senha">
+                            </div>
+                        </form>
+                    </section>
+                </main>
+            </div>
+        </div>
+    </div>
+
+    <!--Footer-->
+    <footer style="position: absolute; width: 100%;" id="contact" class="page-footer default_color scrollspy">
+        <div class="col s12">
+            <h5 class="center header text_h2" style="color: white;"> Classificados ICET </h5>
+        </div>
     </footer>
+
+
+    <!--  Scripts-->
+    <script src="min/plugin-min.js"></script>
+    <script src="min/custom-min.js"></script>
+
 </body>
+
 </html>
