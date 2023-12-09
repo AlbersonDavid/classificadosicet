@@ -1,55 +1,77 @@
-#box {
-    width: 500px;
-    margin: 0 auto;
-    padding: 40px;
-    background-color: #f2f2f2;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    margin-top: 80px; 
-
+/* Estilos das seções */
+.section-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+    transition: font-size 0.3s ease, margin-bottom 0.3s ease;
 }
-        form {
-            text-align: left;
-        }
 
-        h2 {
-            font-size: 24px;
-            text-align: center;
-        }
+.form-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 70vh;
+    /* Defina a altura mínima em relação à altura da viewport (por exemplo, 70% da altura da viewport) */
+    padding: 20px;
+    margin-top: 40px;
+    /* Adicione um espaçamento superior para afastar o formulário do cabeçalho */
+}
 
-        label {
-            font-weight: bold;
-            display: block;
-            margin-top: 10px;
-        }
+.containers {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    /* Defina a largura máxima do formulário */
+    margin: 0 auto;
+    /* Centraliza o formulário na página */
+    margin-top: 40px;
+    /* Adicione um espaçamento superior para afastar o formulário do cabeçalho */
+}
 
-        input {
-            width: 100%;
-            padding: 10px;
-            margin: 5px 0;
-            border: 1px solid #ccc;
-            border-radius: 3px;
-            transition: border-color 0.3s;
-        }
+.containers h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
 
-        input[type="submit"] {
-            background-color: #64a36f;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 3px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
+.form-group {
+    margin-bottom: 20px;
+}
 
-        input[type="submit"]:hover {
-            background-color: #64a36f;
-        }
+.form-group label {
+    font-weight: bold;
+}
 
-        #box:hover input {
-            border-color: #64a36f;
-        }
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
 
+.help-block {
+    color: #ff0000;
+}
+
+.btn-primary {
+    background-color: #00875e;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;   
+    text-align: center;
+    
+}
+
+.btn-default {
+    background-color: #00875e;
+    color: #333;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
 /*------------------------------------------------------------------------------------*/
 
 .logo {

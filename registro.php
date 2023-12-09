@@ -184,8 +184,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <span class="help-block"><?php echo $terms_err; ?></span>
                 </div>
                 <div class="form-group">
-                    <input type="submit" class="btn btn-primary" value="Registrar">
-                    <input type="reset" class="btn btn-default" value="Limpar">
+                    <input type="submit" class="btn-primary" value="Registrar">
+                    <input type="reset" class="btn-default" value="Limpar">
                 </div>
                 <p>Já tem uma conta? <a href="login.php">Faça o login aqui</a>.</p>
             </form>

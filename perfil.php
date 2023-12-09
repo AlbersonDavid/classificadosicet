@@ -96,18 +96,16 @@ $resultProdutos = $stmtProdutos->fetchAll(PDO::FETCH_ASSOC);
     <div id="intro" class="section scrollspy">
         <div class="container">
             <div class="row">
-                <div style="width: 60%;" class="col s12 m4 l4">
-                    <h2 style="text-align: left;" class="center header text_h2"> Perfil do Usuário <br> Bem-vindo, <?php echo $nomeUsuario; ?> </h2>
-                </div>
-
-                <div style="float: right;" class="col s12 m4 l4" id="user-profile">
+            <div style="float: right;" class="col s12" id="user-profile">
                     <?php if (!empty($fotoPerfil)) { ?>
                         <img src="imagens/<?php echo $fotoPerfil; ?>" alt="Foto de Perfil">
                     <?php } else { ?>
                         <p>Você ainda não possui uma foto de perfil. <a href="alterar_foto_perfil.php">Adicionar foto</a></p>
                     <?php } ?>
                 </div>
-
+                <div class="col s12">
+                    <h2 class="center header text_h2"> Perfil do Usuário <br> Bem-vindo, <?php echo $nomeUsuario; ?> </h2>
+                </div>
                 <div class="col s12">
                     <div class="center promo promo-example">
                         <h5 class="promo-caption">Aqui você pode visualizar e gerenciar suas informações de perfil e produtos cadastrados.</h5>

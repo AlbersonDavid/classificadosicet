@@ -22,30 +22,58 @@ $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#00875e">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
-    <link rel="icon" href="assets/Icon.png" type="image/png">
-    <title>Resultados da Pesquisa</title>
-    <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
-    <header>
-        <div class="logo">
-            <a href="index.php"><img src="assets/logoclassificados.png" alt="Logo da Página"></a>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="admin/admin.php"><img src="assets/admin-icon.png" alt="Admin"> Admin</a></li>
-                <li><a href="registro.php"><img src="assets/user-icon.png" alt="Criar Usuário"> Criar Usuário</a></li>
-                <li><a href="login.php"><img src="assets/login-icon.png" alt="Login"> Login</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <div class="container">
+    <!-- CSS  -->
+    <link href="min/plugin-min.css" type="text/css" rel="stylesheet">
+    <link href="min/custom-min.css" type="text/css" rel="stylesheet">
+    <link href="css/pesquisa.css" type="text/css" rel="stylesheet">
+    <link rel="icon" href="assets/Icon.png" type="image/png">
+    <title>Resultado</title>
+</head>
+
+<body id="top" class="scrollspy">
+
+
+    <!-- Pre Loader -->
+    <div id="loader-wrapper">
+        <div id="loader"></div>
+
+        <div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+
+    </div>
+
+    <!--Navigation-->
+    <div class="navbar-fixed">
+        <nav id="nav_f" class="default_color" role="navigation">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <a href="index.php" id="logo-container" class="brand-logo">
+                        <img class="logo" src="assets/logoclassificados.png">
+                    </a>
+                    <ul class="right hide-on-med-and-down">
+                        <li><a href="login.php">Login</a></li>
+                    </ul>
+                    <ul id="nav-mobile" class="side-nav">
+                        <li><a href="login.php">Login</a></li>
+                    </ul>
+                    <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+                </div>
+            </div>
+        </nav>
+    </div>
+    
+    <!--Work-->
+    <div class="section scrollspy" id="work">
+        <div class="containers form-wrapper">
+        <div class="container">
         <h1>Resultados da Pesquisa</h1>
         <?php if(isset($resultados) && count($resultados) > 0): ?>
             <section id="resultados">
@@ -65,11 +93,20 @@ $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <p>Nenhum resultado encontrado.</p>
         <?php endif; ?>
     </div>
+        </div>
+    </div>
 
-    <footer>
-        <div class="container">
-            <p>&copy; Classificados ICET - Projeto SUPER</p>
+    <!--Footer-->
+    <footer style="position: absolute; width: 100%;" id="contact" class="page-footer default_color scrollspy">
+        <div class="col s12">
+            <h5 class="center header text_h2" style="color: white;"> Classificados ICET </h5>
         </div>
     </footer>
+
+
+    <!--  Scripts-->
+    <script src="min/plugin-min.js"></script>
+    <script src="min/custom-min.js"></script>
+
 </body>
 </html>

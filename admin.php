@@ -54,8 +54,8 @@
 
     <!--Work-->
     <div class="section scrollspy" id="work">
-        <div id="box">
-            <?php
+        <div class="containers form-wrapper">
+        <?php
             include 'includes/conexao.php';
 
             session_start(); // Inicie a sessão
@@ -106,13 +106,19 @@
                 }
             }
             ?>
+            <h2>Login do Administrador</h2><br>
             <form method="post">
-                <h2>Login Administrador</h2>
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email"><br>
-                <label for="senha">Senha:</label>
-                <input type="password" id="senha" name="senha"><br>
-                <input type="submit" value="Entrar">
+                <div class="form-group">
+                    <label>E-mail</label>
+                    <input type="email" name="email" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Senha</label>
+                    <input type="password" name="senha" class="form-control">
+                </div>
+                
+                <input type="submit" class="btn-primary" value="Entrar">
+                
             </form>
         </div>
     </div>
