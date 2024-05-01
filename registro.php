@@ -114,6 +114,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link href="min/plugin-min.css" type="text/css" rel="stylesheet">
     <link href="min/custom-min.css" type="text/css" rel="stylesheet">
     <link href="css/registro.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="icon" href="assets/Icon.png" type="image/png">
     <title>Cadastro</title>
 </head>
@@ -177,12 +178,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <span class="help-block"><?php echo $senha_err; ?></span>
                 </div>
                 <div class="form-group <?php echo (!empty($terms_err)) ? 'has-error' : ''; ?>">
-                    <label for="accept-terms">
-                        <input type="checkbox" id="accept-terms" name="accept-terms" required>
-                        Eu concordo com os <a href="termos.php" target="_blank">Termos e Condições</a>.
-                    </label>
-                    <span class="help-block"><?php echo $terms_err; ?></span>
-                </div>
+    <label for="accept-terms">
+        <input type="checkbox" class="filled-in" checked="checked" id="accept-terms" name="accept-terms">
+        <span>Eu concordo com os</span> <a href="termos.php" target="_blank">Termos e Condições</a>.
+    </label>
+    <span class="help-block"><?php echo $terms_err; ?></span>
+</div>
                 <div class="form-group">
                     <input type="submit" class="btn-primary" value="Registrar">
                     <input type="reset" class="btn-default" value="Limpar">
@@ -201,6 +202,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
     <!--  Scripts-->
+    <!-- Adicione o jQuery (necessário para alguns componentes do Materialize) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <!-- Adicione o Materialize JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="min/plugin-min.js"></script>
     <script src="min/custom-min.js"></script>
 
