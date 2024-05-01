@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($stmt->execute()) {
         // Redireciona para a página de produtos
-        header('Location: produtos.php');
+        header('Location: perfil.php');
         exit();
     } else {
         // Tratamento de erro, se necessário
@@ -86,10 +86,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <img class="logo" src="assets/logoclassificados.png">
                     </a>
                     <ul class="right hide-on-med-and-down">
-                        <li><a href="login.php">Perfil</a></li>
+                        <li><a href="perfil.php">Perfil</a></li>
                     </ul>
                     <ul id="nav-mobile" class="side-nav">
-                        <li><a href="login.php">Perfil</a></li>
+                        <li><a href="perfil.php">Perfil</a></li>
                     </ul>
                     <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
                 </div>
@@ -141,7 +141,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <input type="text" id="preco" name="preco"><br>
                 <label for="whatsapp_contato">Número de WhatsApp:</label>
                 <input type="text" id="whatsapp_contato" name="whatsapp_contato"><br>
-                <input type="submit" value="Adicionar">
+                <input type="submit" class="btn-primary" value="Adicionar">
             </form>
         </div>
     </div>

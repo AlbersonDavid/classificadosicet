@@ -53,17 +53,59 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#00875e">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
-    <title>Redefinir Senha</title>
-    <link rel="stylesheet" href="css/alterar_senha.css">
+
+    <!-- CSS  -->
+    <link href="min/plugin-min.css" type="text/css" rel="stylesheet">
+    <link href="min/custom-min.css" type="text/css" rel="stylesheet">
+    <link href="css/redefinesenha.css" type="text/css" rel="stylesheet">
+    <link rel="icon" href="assets/Icon.png" type="image/png">
+    <title>Redefiner Senha</title>
 </head>
-<body>
-    <h2>Redefinir Senha</h2>
+
+<body id="top" class="scrollspy">
+
+
+    <!-- Pre Loader -->
+    <div id="loader-wrapper">
+        <div id="loader"></div>
+
+        <div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+
+    </div>
+
+    <!--Navigation-->
+    <div class="navbar-fixed">
+        <nav id="nav_f" class="default_color" role="navigation">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <a href="index.php" id="logo-container" class="brand-logo">
+                        <img class="logo" src="assets/logoclassificados.png">
+                    </a>
+                    <ul class="right hide-on-med-and-down">
+                        <li><a href="login.php">Login</a></li>
+                    </ul>
+                    <ul id="nav-mobile" class="side-nav">
+                        <li><a href="login.php">Login</a></li>
+                    </ul>
+                    <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+                </div>
+            </div>
+        </nav>
+    </div>
+    
+    <!--Work-->
+    <div class="section scrollspy" id="work">
+        <div class="containers form-wrapper">
+        <h2>Redefinir Senha</h2>
     <p>Por favor, insira sua nova senha.</p>
 
     <!-- Formulário de redefinição de senha -->
@@ -79,8 +121,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <span class="help-block"><?php echo $confirmarSenha_err; ?></span>
         </div>
         <div class="form-group">
-            <input type="submit" value="Redefinir Senha">
+            <input type="submit" class="btn-primary value="Redefinir Senha">
         </div>
     </form>
+        </div>
+    </div>
+
+    <!--Footer-->
+    <footer style="position: absolute; width: 100%;" id="contact" class="page-footer default_color scrollspy">
+        <div class="col s12">
+            <h5 class="center header text_h2" style="color: white;"> Classificados ICET </h5>
+        </div>
+    </footer>
+
+
+    <!--  Scripts-->
+    <script src="min/plugin-min.js"></script>
+    <script src="min/custom-min.js"></script>
+
 </body>
+
 </html>

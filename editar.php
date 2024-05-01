@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($stmt->execute()) {
         // Redireciona para a página de produtos após a edição
-        header('Location: produtos.php');
+        header('Location: perfil.php');
         exit();
     } else {
         // Tratamento de erro, se necessário
@@ -63,26 +63,64 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#00875e">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
-    <title>Editar Produto</title>
-    <link rel="stylesheet" href="css/adicionar.css">
-</head>
-<body>
-    <header>
-        <div class="logo">
-            <a href="index.php"><img src="assets/logo.png" alt="Logo da Página"></a>
-        </div>
-    </header>
 
-    <h1>Editar Produto</h1>
+    <!-- CSS  -->
+    <link href="min/plugin-min.css" type="text/css" rel="stylesheet">
+    <link href="min/custom-min.css" type="text/css" rel="stylesheet">
+    <link href="css/login.css" type="text/css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link rel="icon" href="assets/Icon.png" type="image/png">
+    <title>Editar Produto</title>
+</head>
+
+<body id="top" class="scrollspy">
+
+
+    <!-- Pre Loader -->
+    <div id="loader-wrapper">
+        <div id="loader"></div>
+
+        <div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+
+    </div>
+
+    <!--Navigation-->
+    <div class="navbar-fixed">
+        <nav id="nav_f" class="default_color" role="navigation">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <a href="index.php" id="logo-container" class="brand-logo">
+                        <img class="logo" src="assets/logoclassificados.png">
+                    </a>
+                    <ul class="right hide-on-med-and-down">
+                        <li><a href="perfil.php">Perfil</a></li>
+                    </ul>
+                    <ul id="nav-mobile" class="side-nav">
+                        <li><a href="perfil.php">Perfil</a></li>
+                    </ul>
+                    <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <!--Work-->
+    <div class="section scrollspy" id="work">
+        <div class="containers form-wrapper">
+            <br>
+            <h2>Editar Produto</h2>
     <form method="post" enctype="multipart/form-data">
         <input type="hidden" name="id_produto" value="<?php echo $produto['id']; ?>">
         <label for="categoria">Categoria:</label>
@@ -110,14 +148,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input type="text" id="preco" name="preco" value="<?php echo $produto['preco']; ?>"><br>
         <label for="whatsapp_contato">Número de WhatsApp:</label>
         <input type="text" id="whatsapp_contato" name="whatsapp_contato" value="<?php echo $produto['whatsapp_contato']; ?>"><br>
-        <input type="submit" value="Salvar Alterações">
+        <input type="submit" class="btn-primary" value="Salvar Alterações">
     </form>
-    <p>
-        <a href="produtos.php">Voltar para a lista de produtos</a>
-    </p><br>
+        </div>
+    </div>
 
-    <footer class="footer-container">
-        <p>&copy; Classificados ICET - Projeto SUPER </p>
+    <!--Footer-->
+    <footer style="position: absolute; width: 100%;" id="contact" class="page-footer default_color scrollspy">
+        <div class="col s12">
+            <h5 class="center header text_h2" style="color: white;"> Classificados ICET </h5>
+        </div>
     </footer>
+
+
+    <!--  Scripts-->
+    <script>
+        M.AutoInit();
+    </script>
+    <script src="min/plugin-min.js"></script>
+    <script src="min/custom-min.js"></script>
+
+
 </body>
+
 </html>
