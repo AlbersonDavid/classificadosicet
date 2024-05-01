@@ -137,31 +137,6 @@ $resultProdutos = $stmtProdutos->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </div>
 
-    <!--Work-->
-    <div class="section scrollspy" id="work">
-        <div class="col s12">
-            <div class="center promo promo-example">
-                <main>
-                    <section id="change-password">
-                        <h3>Alterar Senha</h3>
-                        <form action="alterar_senha.php" method="post">
-                            <div class="form-group">
-                                <label>Nova Senha: <br></label>
-                                <input type="password" name="nova_senha" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Confirme a Nova Senha: <br></label>
-                                <input type="password" name="confirmar_senha" required>
-                            </div>
-                            <div class="form-group">
-                                <input type="submit" value="Alterar Senha">
-                            </div>
-                        </form>
-                    </section>
-                </main>
-            </div>
-        </div>
-    </div>
 
     <!--Footer-->
     <footer style="position: absolute; width: 100%;" id="contact" class="page-footer default_color scrollspy">
