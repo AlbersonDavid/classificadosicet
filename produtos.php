@@ -1,30 +1,61 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#00875e">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
+
+    <!-- CSS  -->
+    <link href="min/plugin-min.css" type="text/css" rel="stylesheet">
+    <link href="min/custom-min.css" type="text/css" rel="stylesheet">
+    <link href="css/produtos.css" type="text/css" rel="stylesheet">
     <link rel="icon" href="assets/Icon.png" type="image/png">
     <title>Produtos</title>
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
- <script type="text/javascript" src="js/main.js"></script>
-
-    <link rel="stylesheet" href="css/produtos.css">
 </head>
 
-<body>
-    <header>
-        <div class="logo">
-            <a href="index.php"><img src="assets/logoclassificados.png" alt="Logo da Página"></a>
-        </div>
+<body id="top" class="scrollspy">
+
+
+    <!-- Pre Loader -->
+    <div id="loader-wrapper">
+        <div id="loader"></div>
+
+        <div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+
+    </div>
+
+    <!--Navigation-->
+    <div class="navbar-fixed">
+        <nav id="nav_f" class="default_color" role="navigation">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <a href="index.php" id="logo-container" class="brand-logo">
+                        <img class="logo" src="assets/logoclassificados.png">
+                    </a>
+                    <ul class="right hide-on-med-and-down">
+                    <li><a href="index.php">Inicial</a></li>
+                    <li><a href="perfil.php">Perfil</a></li>
+                    
+                    </ul>
+                    <ul id="nav-mobile" class="side-nav">
+                    <li><a href="index.php">Inicial</a></li>
+                    <li><a href="perfil.php">Perfil</a></li>
+                
+                    </ul>
+                    <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+                </div>
+            </div>
+        </nav>
+    </div>
         <nav>
-            <div class="box">
+            <div class="catbox">
                 <select id="categoryDropdown" onchange="redirectToCategory()">
                     <option value="all">Todas as Categorias</option>
                     <option>Categorias</option>
@@ -87,21 +118,23 @@
                 }
                 ?>
             </div>
-            <br>
-            <br>
-            <p>
-                <a href="categorias.php">Voltar para categorias de produtos</a>
-                <a href="perfil.php">Voltar para perfil</a>
-            </p><br>
         </div>
 
         <div class="spacer"></div>
     </div>
-    <footer>
-        <div class="container">
-            <p class="footer-text">&copy; Classificados ICET - Projeto SUPER</p>
+    
+    <!--Footer-->
+    <footer style="position: absolute; width: 100%;" id="contact" class="page-footer default_color scrollspy">
+        <div class="col s12">
+            <h5 class="center header text_h2" style="color: white;"> Classificados ICET </h5>
         </div>
     </footer>
+
+
+    <!--  Scripts-->
+    <script src="min/plugin-min.js"></script>
+    <script src="min/custom-min.js"></script>
+
 </body>
 
 </html>

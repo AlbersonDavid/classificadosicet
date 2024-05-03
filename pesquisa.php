@@ -59,9 +59,11 @@ $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <img class="logo" src="assets/logoclassificados.png">
                     </a>
                     <ul class="right hide-on-med-and-down">
+                    <li><a href="index.php">Inicial</a></li>
                         <li><a href="login.php">Login</a></li>
                     </ul>
                     <ul id="nav-mobile" class="side-nav">
+                    <li><a href="index.php">Inicial</a></li>
                         <li><a href="login.php">Login</a></li>
                     </ul>
                     <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>

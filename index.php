@@ -43,23 +43,28 @@ $recentProducts = $stmtRecentProducts->fetchAll(PDO::FETCH_ASSOC);
 
     <!--Navigation-->
     <div class="navbar-fixed">
-        <nav id="nav_f" class="default_color" role="navigation">
-            <div class="container">
-                <div class="nav-wrapper">
-                    <a href="index.php" id="logo-container" class="brand-logo">
-                        <img class="logo" src="assets/logoclassificados.png">
-                    </a>
-                    <ul class="right hide-on-med-and-down">
-                        <li><a href="login.php">Login</a></li>
-                    </ul>
-                    <ul id="nav-mobile" class="side-nav">
-                        <li><a href="login.php">Login</a></li>
-                    </ul>
-                    <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
-                </div>
+    <nav id="nav_f" class="default_color" role="navigation">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="index.php" id="logo-container" class="brand-logo">
+                    <img class="logo" src="assets/logoclassificados.png">
+                </a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="login.php">Login</a></li>
+                    <li><a href="perfil.php">Perfil</a></li>
+                    <li><a href="download/classificadosicet.apk">Mobile</a></li> <!-- Link para download do APK -->
+                </ul>
+                <ul id="nav-mobile" class="side-nav">
+                    <li><a href="login.php">Login</a></li>
+                    <li><a href="perfil.php">Perfil</a></li>
+                    <li><a href="download/classificadosicet.apk">Mobile</a></li> <!-- Link para download do APK -->
+                </ul>
+                <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
             </div>
-        </nav>
-    </div>
+        </div>
+    </nav>
+</div>
+
 
     <!--Hero-->
     <div class="section no-pad-bot" id="index-banner">
